@@ -1,0 +1,13 @@
+name: numba
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - numba
+  - triton
+  - scipy
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+prefix: /home/isabelle/miniconda3/envs/numba
