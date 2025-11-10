@@ -40,6 +40,21 @@ Directory: `numba_matmul/`
 - Optional edit: set `CSV_FILENAME` inside the script if the CSV lives elsewhere.
 - Generates plots in `numba_matmul/numba_plots/` (directory created automatically) and prints the best-performing configuration.
 
+### 4. Explore Compiler Dumps for the Tiled Demo
+- Activate your Numba environment and change into `numba_matmul/numba_dump` so the generated debug files stay alongside the helper scripts: `cd numba_matmul/numba_dump`.
+- Run the tiled demo with the desired `NUMBA_*` dump switches to capture the compiler stages for the one-layer tiled kernel in `numba_matmul_tile_demo.py`:
+	- `NUMBA_DEBUG_PRINT_AFTER=all python numba_matmul_tile_demo.py > tile_demo_print_after.txt`
+	- `NUMBA_DUMP_CFG=1 python numba_matmul_tile_demo.py > tile_demo_print_cfg.txt`
+	- `NUMBA_DUMP_SSA=1 python numba_matmul_tile_demo.py > tile_demo_print_ssa.txt`
+	- `NUMBA_DUMP_ANNOTATION=1 python numba_matmul_tile_demo.py > tile_demo_print_type.txt`
+	- `NUMBA_DUMP_LLVM=1 python numba_matmul_tile_demo.py > tile_demo_print_llvm.txt`
+	- `NUMBA_DUMP_FUNC_OPT=1 python numba_matmul_tile_demo.py > tile_demo_print_llvm_func_opt.txt`
+	- `NUMBA_DUMP_OPTIMIZED=1 python numba_matmul_tile_demo.py > tile_demo_print_llvm_opt.txt`
+- `NUMBA_DEBUG_PRINT_AFTER` accepts values such as `1`, `"foo_pass,bar_pass"`; use the variant that matches the amount of post-pass logging you want to inspect.
+- Each command overwrites the matching `tile_demo_print_*.txt` file; re-run as needed when experimenting with the kernel.
+- Convert the control-flow graph dump into a PNG once `tile_demo_print_cfg.txt` has been created: `python draw_cfg.py tile_demo_print_cfg.txt --output tile_demo_cfg.png`.
+- Open the resulting `tile_demo_cfg.png` to visualize the basic blocks and loop structure of the tiled multiplier.
+
 ## Triton
 Directory: `triton_matmul/`
 

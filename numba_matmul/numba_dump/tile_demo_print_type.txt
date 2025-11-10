@@ -1,0 +1,283 @@
+-----------------------------------ANNOTATION-----------------------------------
+# File: /home/isabelle/ece/numba_matmul/numba_matmul_tile_demo.py
+# --- LINE 9 --- 
+# label 0
+#   A = arg(0, name=A)  :: array(float64, 2d, C)
+#   B = arg(1, name=B)  :: array(float64, 2d, C)
+#   C = arg(2, name=C)  :: array(float64, 2d, C)
+#   B1 = arg(3, name=B1)  :: int64
+
+@jit(nopython=True)
+
+# --- LINE 10 --- 
+
+def numba_tiled_mul(A, B, C, B1):
+
+    # --- LINE 11 --- 
+
+    """Numba-jitted 1-level (6-loop) tiled matrix multiplication. C must be pre-zeroed."""
+
+    # --- LINE 12 --- 
+    #   $6load_attr.1 = getattr(value=A, attr=shape)  :: UniTuple(int64 x 2)
+    #   $const26.2.1 = const(int, 0)  :: Literal[int](0)
+    #   N = static_getitem(value=$6load_attr.1, index=0, index_var=$const26.2.1, fn=<built-in function getitem>)  :: int64
+    #   del $const26.2.1
+    #   del $6load_attr.1
+
+    N = A.shape[0]
+
+    # --- LINE 13 --- 
+    #   $34load_global.4 = global(range: <class 'range'>)  :: Function(<class 'range'>)
+    #   $const44.6.1 = const(int, 0)  :: Literal[int](0)
+    #   $50call.9 = call $34load_global.4($const44.6.1, N, B1, func=$34load_global.4, args=[Var($const44.6.1, numba_matmul_tile_demo.py:13), Var(N, numba_matmul_tile_demo.py:12), Var(B1, numba_matmul_tile_demo.py:9)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64, int64) -> range_state_int64
+    #   del $const44.6.1
+    #   del $34load_global.4
+    #   $58get_iter.10 = getiter(value=$50call.9)  :: range_iter_int64
+    #   del $50call.9
+    #   $phi60.0 = $58get_iter.10  :: range_iter_int64
+    #   del $58get_iter.10
+    #   jump 60
+    # label 60
+    #   $60for_iter.1 = iternext(value=$phi60.0)  :: pair<int64, bool>
+    #   $60for_iter.2 = pair_first(value=$60for_iter.1)  :: int64
+    #   $60for_iter.3 = pair_second(value=$60for_iter.1)  :: bool
+    #   del $60for_iter.1
+    #   $phi64.1 = $60for_iter.2  :: int64
+    #   del $60for_iter.2
+    #   branch $60for_iter.3, 64, 390
+    # label 64
+    #   del $60for_iter.3
+    #   ii = $phi64.1  :: int64
+    #   del $phi64.1
+
+    for ii in range(0, N, B1):
+
+        # --- LINE 14 --- 
+        #   $66load_global.2 = global(range: <class 'range'>)  :: Function(<class 'range'>)
+        #   $const76.4.1 = const(int, 0)  :: Literal[int](0)
+        #   $82call.7 = call $66load_global.2($const76.4.1, N, B1, func=$66load_global.2, args=[Var($const76.4.1, numba_matmul_tile_demo.py:14), Var(N, numba_matmul_tile_demo.py:12), Var(B1, numba_matmul_tile_demo.py:9)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64, int64) -> range_state_int64
+        #   del $const76.4.1
+        #   del $66load_global.2
+        #   $90get_iter.8 = getiter(value=$82call.7)  :: range_iter_int64
+        #   del $82call.7
+        #   $phi92.1 = $90get_iter.8  :: range_iter_int64
+        #   del $90get_iter.8
+        #   jump 92
+        # label 92
+        #   $92for_iter.2 = iternext(value=$phi92.1)  :: pair<int64, bool>
+        #   $92for_iter.3 = pair_first(value=$92for_iter.2)  :: int64
+        #   $92for_iter.4 = pair_second(value=$92for_iter.2)  :: bool
+        #   del $92for_iter.2
+        #   $phi96.2 = $92for_iter.3  :: int64
+        #   del $92for_iter.3
+        #   branch $92for_iter.4, 96, 386
+        # label 96
+        #   del $92for_iter.4
+        #   jj = $phi96.2  :: int64
+        #   del $phi96.2
+        # label 386
+        #   del ii
+        #   del $phi96.2
+        #   del $phi92.1
+        #   del $92for_iter.4
+        #   jump 60
+
+        for jj in range(0, N, B1):
+
+            # --- LINE 15 --- 
+            #   $98load_global.3 = global(range: <class 'range'>)  :: Function(<class 'range'>)
+            #   $const108.5.1 = const(int, 0)  :: Literal[int](0)
+            #   $114call.8 = call $98load_global.3($const108.5.1, N, B1, func=$98load_global.3, args=[Var($const108.5.1, numba_matmul_tile_demo.py:15), Var(N, numba_matmul_tile_demo.py:12), Var(B1, numba_matmul_tile_demo.py:9)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64, int64) -> range_state_int64
+            #   del $const108.5.1
+            #   del $98load_global.3
+            #   $122get_iter.9 = getiter(value=$114call.8)  :: range_iter_int64
+            #   del $114call.8
+            #   $phi124.2 = $122get_iter.9  :: range_iter_int64
+            #   del $122get_iter.9
+            #   jump 124
+            # label 124
+            #   $124for_iter.3 = iternext(value=$phi124.2)  :: pair<int64, bool>
+            #   $124for_iter.4 = pair_first(value=$124for_iter.3)  :: int64
+            #   $124for_iter.5 = pair_second(value=$124for_iter.3)  :: bool
+            #   del $124for_iter.3
+            #   $phi128.3 = $124for_iter.4  :: int64
+            #   del $124for_iter.4
+            #   branch $124for_iter.5, 128, 382
+            # label 128
+            #   del $124for_iter.5
+            #   kk = $phi128.3  :: int64
+            #   del $phi128.3
+            # label 382
+            #   del jj
+            #   del $phi128.3
+            #   del $phi124.2
+            #   del $124for_iter.5
+            #   jump 92
+
+            for kk in range(0, N, B1):
+
+                # --- LINE 16 --- 
+                #   $130load_global.4 = global(range: <class 'range'>)  :: Function(<class 'range'>)
+                #   $142load_global.7 = global(min: <built-in function min>)  :: Function(<built-in function min>)
+                #   $binop_add156.11 = ii + B1  :: int64
+                #   $162call.13 = call $142load_global.7($binop_add156.11, N, func=$142load_global.7, args=[Var($binop_add156.11, numba_matmul_tile_demo.py:16), Var(N, numba_matmul_tile_demo.py:12)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64) -> int64
+                #   del $binop_add156.11
+                #   del $142load_global.7
+                #   $170call.14 = call $130load_global.4(ii, $162call.13, func=$130load_global.4, args=[Var(ii, numba_matmul_tile_demo.py:13), Var($162call.13, numba_matmul_tile_demo.py:16)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64) -> range_state_int64
+                #   del $162call.13
+                #   del $130load_global.4
+                #   $178get_iter.15 = getiter(value=$170call.14)  :: range_iter_int64
+                #   del $170call.14
+                #   $phi180.3 = $178get_iter.15  :: range_iter_int64
+                #   del $178get_iter.15
+                #   jump 180
+                # label 180
+                #   $180for_iter.4 = iternext(value=$phi180.3)  :: pair<int64, bool>
+                #   $180for_iter.5 = pair_first(value=$180for_iter.4)  :: int64
+                #   $180for_iter.6 = pair_second(value=$180for_iter.4)  :: bool
+                #   del $180for_iter.4
+                #   $phi184.4 = $180for_iter.5  :: int64
+                #   del $180for_iter.5
+                #   branch $180for_iter.6, 184, 378
+                # label 184
+                #   del $180for_iter.6
+                #   i = $phi184.4  :: int64
+                #   del $phi184.4
+                # label 378
+                #   del kk
+                #   del $phi184.4
+                #   del $phi180.3
+                #   del $180for_iter.6
+                #   jump 124
+
+                for i in range(ii, min(ii + B1, N)):
+
+                    # --- LINE 17 --- 
+                    #   $186load_global.5 = global(range: <class 'range'>)  :: Function(<class 'range'>)
+                    #   $198load_global.8 = global(min: <built-in function min>)  :: Function(<built-in function min>)
+                    #   $binop_add212.12 = jj + B1  :: int64
+                    #   $218call.14 = call $198load_global.8($binop_add212.12, N, func=$198load_global.8, args=[Var($binop_add212.12, numba_matmul_tile_demo.py:17), Var(N, numba_matmul_tile_demo.py:12)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64) -> int64
+                    #   del $binop_add212.12
+                    #   del $198load_global.8
+                    #   $226call.15 = call $186load_global.5(jj, $218call.14, func=$186load_global.5, args=[Var(jj, numba_matmul_tile_demo.py:14), Var($218call.14, numba_matmul_tile_demo.py:17)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64) -> range_state_int64
+                    #   del $218call.14
+                    #   del $186load_global.5
+                    #   $234get_iter.16 = getiter(value=$226call.15)  :: range_iter_int64
+                    #   del $226call.15
+                    #   $phi236.4 = $234get_iter.16  :: range_iter_int64
+                    #   del $234get_iter.16
+                    #   jump 236
+                    # label 236
+                    #   $236for_iter.5 = iternext(value=$phi236.4)  :: pair<int64, bool>
+                    #   $236for_iter.6 = pair_first(value=$236for_iter.5)  :: int64
+                    #   $236for_iter.7 = pair_second(value=$236for_iter.5)  :: bool
+                    #   del $236for_iter.5
+                    #   $phi240.5 = $236for_iter.6  :: int64
+                    #   del $236for_iter.6
+                    #   branch $236for_iter.7, 240, 374
+                    # label 240
+                    #   del $236for_iter.7
+                    #   j = $phi240.5  :: int64
+                    #   del $phi240.5
+                    # label 374
+                    #   del i
+                    #   del $phi240.5
+                    #   del $phi236.4
+                    #   del $236for_iter.7
+                    #   jump 180
+
+                    for j in range(jj, min(jj + B1, N)):
+
+                        # --- LINE 18 --- 
+                        #   tmp = const(float, 0.0)  :: float64
+                        #   tmp.2 = tmp  :: float64
+                        #   del tmp
+
+                        tmp = 0.0
+
+                        # --- LINE 19 --- 
+                        #   $246load_global.7 = global(range: <class 'range'>)  :: Function(<class 'range'>)
+                        #   $258load_global.10 = global(min: <built-in function min>)  :: Function(<built-in function min>)
+                        #   $binop_add272.14 = kk + B1  :: int64
+                        #   $278call.16 = call $258load_global.10($binop_add272.14, N, func=$258load_global.10, args=[Var($binop_add272.14, numba_matmul_tile_demo.py:19), Var(N, numba_matmul_tile_demo.py:12)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64) -> int64
+                        #   del $binop_add272.14
+                        #   del $258load_global.10
+                        #   $286call.17 = call $246load_global.7(kk, $278call.16, func=$246load_global.7, args=[Var(kk, numba_matmul_tile_demo.py:15), Var($278call.16, numba_matmul_tile_demo.py:19)], kws=(), vararg=None, varkwarg=None, target=None)  :: (int64, int64) -> range_state_int64
+                        #   del $278call.16
+                        #   del $246load_global.7
+                        #   $294get_iter.18 = getiter(value=$286call.17)  :: range_iter_int64
+                        #   del $286call.17
+                        #   $phi296.5 = $294get_iter.18  :: range_iter_int64
+                        #   del $294get_iter.18
+                        #   jump 296
+                        # label 296
+                        #   $296for_iter.6 = iternext(value=$phi296.5)  :: pair<int64, bool>
+                        #   $296for_iter.7 = pair_first(value=$296for_iter.6)  :: int64
+                        #   $296for_iter.8 = pair_second(value=$296for_iter.6)  :: bool
+                        #   del $296for_iter.6
+                        #   $phi300.6 = $296for_iter.7  :: int64
+                        #   del $296for_iter.7
+                        #   branch $296for_iter.8, 300, 340
+                        # label 300
+                        #   del $296for_iter.8
+                        #   k = $phi300.6  :: int64
+                        #   del $phi300.6
+
+                        for k in range(kk, min(kk + B1, N)):
+
+                            # --- LINE 20 --- 
+                            #   $310build_tuple.11 = build_tuple(items=[Var(i, numba_matmul_tile_demo.py:16), Var(k, numba_matmul_tile_demo.py:19)])  :: UniTuple(int64 x 2)
+                            #   $312binary_subscr.12 = getitem(value=A, index=$310build_tuple.11, fn=<built-in function getitem>)  :: float64
+                            #   del $310build_tuple.11
+                            #   $322build_tuple.16 = build_tuple(items=[Var(k, numba_matmul_tile_demo.py:19), Var(j, numba_matmul_tile_demo.py:17)])  :: UniTuple(int64 x 2)
+                            #   del k
+                            #   $324binary_subscr.17 = getitem(value=B, index=$322build_tuple.16, fn=<built-in function getitem>)  :: float64
+                            #   del $322build_tuple.16
+                            #   $binop_mul328.18 = $312binary_subscr.12 * $324binary_subscr.17  :: float64
+                            #   del $324binary_subscr.17
+                            #   del $312binary_subscr.12
+                            #   $binop_iadd332.19 = inplace_binop(fn=<built-in function iadd>, immutable_fn=<built-in function add>, lhs=tmp.2, rhs=$binop_mul328.18, static_lhs=Undefined, static_rhs=Undefined)  :: float64
+                            #   del $binop_mul328.18
+                            #   tmp.1 = $binop_iadd332.19  :: float64
+                            #   del $binop_iadd332.19
+                            #   tmp.2 = tmp.1  :: float64
+                            #   del tmp.1
+                            #   jump 296
+
+                            tmp += A[i, k] * B[k, j]
+
+                        # --- LINE 21 --- 
+                        # label 340
+                        #   del $phi300.6
+                        #   del $phi296.5
+                        #   del $296for_iter.8
+                        #   $348build_tuple.10 = build_tuple(items=[Var(i, numba_matmul_tile_demo.py:16), Var(j, numba_matmul_tile_demo.py:17)])  :: UniTuple(int64 x 2)
+                        #   del j
+                        #   $354binary_subscr.11 = getitem(value=C, index=$348build_tuple.10, fn=<built-in function getitem>)  :: float64
+                        #   $binop_iadd360.13 = inplace_binop(fn=<built-in function iadd>, immutable_fn=<built-in function add>, lhs=$354binary_subscr.11, rhs=tmp.2, static_lhs=Undefined, static_rhs=Undefined)  :: float64
+                        #   del tmp.2
+                        #   del $354binary_subscr.11
+                        #   C[$348build_tuple.10] = $binop_iadd360.13  :: (Array(float64, 2, 'C', False, aligned=True), UniTuple(int64, 2), float64) -> none
+                        #   del $binop_iadd360.13
+                        #   del $348build_tuple.10
+                        #   jump 236
+
+                        C[i, j] += tmp
+
+    # --- LINE 22 --- 
+    # label 390
+    #   del N
+    #   del B1
+    #   del B
+    #   del A
+    #   del $phi64.1
+    #   del $phi60.0
+    #   del $60for_iter.3
+    #   $394return_value.3 = cast(value=C)  :: array(float64, 2d, C)
+    #   del C
+    #   return $394return_value.3
+
+    return C
+
+
+================================================================================

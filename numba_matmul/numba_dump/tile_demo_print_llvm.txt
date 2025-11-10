@@ -1,0 +1,1436 @@
+--------------LLVM DUMP <function descriptor 'numba_tiled_mul$1'>---------------
+; ModuleID = "numba_tiled_mul$1"
+target triple = "x86_64-unknown-linux-gnu"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
+
+@"_ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx" = common global i8* null
+define i32 @"_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx"({i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* noalias nocapture %"retptr", {i8*, i32, i8*, i8*, i32}** noalias nocapture %"excinfo", i8* %"arg.A.0", i8* %"arg.A.1", i64 %"arg.A.2", i64 %"arg.A.3", double* %"arg.A.4", i64 %"arg.A.5.0", i64 %"arg.A.5.1", i64 %"arg.A.6.0", i64 %"arg.A.6.1", i8* %"arg.B.0", i8* %"arg.B.1", i64 %"arg.B.2", i64 %"arg.B.3", double* %"arg.B.4", i64 %"arg.B.5.0", i64 %"arg.B.5.1", i64 %"arg.B.6.0", i64 %"arg.B.6.1", i8* %"arg.C.0", i8* %"arg.C.1", i64 %"arg.C.2", i64 %"arg.C.3", double* %"arg.C.4", i64 %"arg.C.5.0", i64 %"arg.C.5.1", i64 %"arg.C.6.0", i64 %"arg.C.6.1", i64 %"arg.B1")
+{
+entry:
+  %"inserted.meminfo" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} undef, i8* %"arg.A.0", 0
+  %"inserted.parent" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.meminfo", i8* %"arg.A.1", 1
+  %"inserted.nitems" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.parent", i64 %"arg.A.2", 2
+  %"inserted.itemsize" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.nitems", i64 %"arg.A.3", 3
+  %"inserted.data" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.itemsize", double* %"arg.A.4", 4
+  %".32" = insertvalue [2 x i64] undef, i64 %"arg.A.5.0", 0
+  %".33" = insertvalue [2 x i64] %".32", i64 %"arg.A.5.1", 1
+  %"inserted.shape" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.data", [2 x i64] %".33", 5
+  %".34" = insertvalue [2 x i64] undef, i64 %"arg.A.6.0", 0
+  %".35" = insertvalue [2 x i64] %".34", i64 %"arg.A.6.1", 1
+  %"inserted.strides" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.shape", [2 x i64] %".35", 6
+  %"inserted.meminfo.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} undef, i8* %"arg.B.0", 0
+  %"inserted.parent.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.meminfo.1", i8* %"arg.B.1", 1
+  %"inserted.nitems.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.parent.1", i64 %"arg.B.2", 2
+  %"inserted.itemsize.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.nitems.1", i64 %"arg.B.3", 3
+  %"inserted.data.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.itemsize.1", double* %"arg.B.4", 4
+  %".36" = insertvalue [2 x i64] undef, i64 %"arg.B.5.0", 0
+  %".37" = insertvalue [2 x i64] %".36", i64 %"arg.B.5.1", 1
+  %"inserted.shape.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.data.1", [2 x i64] %".37", 5
+  %".38" = insertvalue [2 x i64] undef, i64 %"arg.B.6.0", 0
+  %".39" = insertvalue [2 x i64] %".38", i64 %"arg.B.6.1", 1
+  %"inserted.strides.1" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.shape.1", [2 x i64] %".39", 6
+  %"inserted.meminfo.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} undef, i8* %"arg.C.0", 0
+  %"inserted.parent.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.meminfo.2", i8* %"arg.C.1", 1
+  %"inserted.nitems.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.parent.2", i64 %"arg.C.2", 2
+  %"inserted.itemsize.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.nitems.2", i64 %"arg.C.3", 3
+  %"inserted.data.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.itemsize.2", double* %"arg.C.4", 4
+  %".40" = insertvalue [2 x i64] undef, i64 %"arg.C.5.0", 0
+  %".41" = insertvalue [2 x i64] %".40", i64 %"arg.C.5.1", 1
+  %"inserted.shape.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.data.2", [2 x i64] %".41", 5
+  %".42" = insertvalue [2 x i64] undef, i64 %"arg.C.6.0", 0
+  %".43" = insertvalue [2 x i64] %".42", i64 %"arg.C.6.1", 1
+  %"inserted.strides.2" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.shape.2", [2 x i64] %".43", 6
+  %"A" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"A"
+  %"B" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"B"
+  %"C" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  %"B1" = alloca i64
+  store i64 0, i64* %"B1"
+  %".68" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".68"
+  %"N" = alloca i64
+  store i64 0, i64* %"N"
+  %".87" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".87"
+  %".97" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".97"
+  %".101" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".101"
+  %".110" = alloca i64
+  store i64 0, i64* %".110"
+  %".113" = alloca i64
+  store i64 0, i64* %".113"
+  %"try_state" = alloca i64
+  store i64 0, i64* %"try_state"
+  %"$phi60.0" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi60.0"
+  %".158" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".158"
+  %".161" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".161"
+  %".187" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".187"
+  %".193" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".193"
+  %"$phi64.1" = alloca i64
+  store i64 0, i64* %"$phi64.1"
+  %"ii" = alloca i64
+  store i64 0, i64* %"ii"
+  %".211" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".211"
+  %".221" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".221"
+  %".225" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".225"
+  %".234" = alloca i64
+  store i64 0, i64* %".234"
+  %".237" = alloca i64
+  store i64 0, i64* %".237"
+  %"$phi92.1" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi92.1"
+  %".280" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".280"
+  %".283" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".283"
+  %".309" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".309"
+  %".315" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".315"
+  %"$phi96.2" = alloca i64
+  store i64 0, i64* %"$phi96.2"
+  %"jj" = alloca i64
+  store i64 0, i64* %"jj"
+  %".333" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".333"
+  %".343" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".343"
+  %".347" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".347"
+  %".356" = alloca i64
+  store i64 0, i64* %".356"
+  %".359" = alloca i64
+  store i64 0, i64* %".359"
+  %"$phi124.2" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi124.2"
+  %".402" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".402"
+  %".405" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".405"
+  %".431" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".431"
+  %".437" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".437"
+  %"$phi128.3" = alloca i64
+  store i64 0, i64* %"$phi128.3"
+  %"kk" = alloca i64
+  store i64 0, i64* %"kk"
+  %".460" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".460"
+  %".470" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".470"
+  %".474" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".474"
+  %".483" = alloca i64
+  store i64 0, i64* %".483"
+  %".486" = alloca i64
+  store i64 0, i64* %".486"
+  %"$phi180.3" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi180.3"
+  %".529" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".529"
+  %".532" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".532"
+  %".558" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".558"
+  %".564" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".564"
+  %"$phi184.4" = alloca i64
+  store i64 0, i64* %"$phi184.4"
+  %"i" = alloca i64
+  store i64 0, i64* %"i"
+  %".587" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".587"
+  %".597" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".597"
+  %".601" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".601"
+  %".610" = alloca i64
+  store i64 0, i64* %".610"
+  %".613" = alloca i64
+  store i64 0, i64* %".613"
+  %"$phi236.4" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi236.4"
+  %".656" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".656"
+  %".659" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".659"
+  %".685" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".685"
+  %".691" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".691"
+  %"$phi240.5" = alloca i64
+  store i64 0, i64* %"$phi240.5"
+  %"j" = alloca i64
+  store i64 0, i64* %"j"
+  %"tmp.2" = alloca double
+  store double 0.0, double* %"tmp.2"
+  %".717" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".717"
+  %".727" = alloca {i64, i64, i64}
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".727"
+  %".731" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".731"
+  %".740" = alloca i64
+  store i64 0, i64* %".740"
+  %".743" = alloca i64
+  store i64 0, i64* %".743"
+  %"$phi296.5" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi296.5"
+  %".786" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".786"
+  %".789" = alloca {i64*, i64, i64, i64*}
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".789"
+  %".815" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".815"
+  %".821" = alloca {i64, i1}
+  store {i64, i1} zeroinitializer, {i64, i1}* %".821"
+  %"$phi300.6" = alloca i64
+  store i64 0, i64* %"$phi300.6"
+  %".840" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840"
+  %".895" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895"
+  %".963" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963"
+  %".1017" = alloca {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017"
+  br label %"B0"
+B0:
+  %"extracted.meminfo" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 0
+  %"extracted.parent" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 1
+  %"extracted.nitems" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 2
+  %"extracted.itemsize" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 3
+  %"extracted.data" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 4
+  %"extracted.shape" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 5
+  %".44" = extractvalue [2 x i64] %"extracted.shape", 0
+  %".45" = extractvalue [2 x i64] %"extracted.shape", 1
+  %"extracted.strides" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", 6
+  %".46" = extractvalue [2 x i64] %"extracted.strides", 0
+  %".47" = extractvalue [2 x i64] %"extracted.strides", 1
+  call void @"NRT_incref"(i8* %"extracted.meminfo")
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"A"
+  %"extracted.meminfo.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 0
+  %"extracted.parent.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 1
+  %"extracted.nitems.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 2
+  %"extracted.itemsize.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 3
+  %"extracted.data.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 4
+  %"extracted.shape.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 5
+  %".51" = extractvalue [2 x i64] %"extracted.shape.1", 0
+  %".52" = extractvalue [2 x i64] %"extracted.shape.1", 1
+  %"extracted.strides.1" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", 6
+  %".53" = extractvalue [2 x i64] %"extracted.strides.1", 0
+  %".54" = extractvalue [2 x i64] %"extracted.strides.1", 1
+  call void @"NRT_incref"(i8* %"extracted.meminfo.1")
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.1", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"B"
+  %"extracted.meminfo.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 0
+  %"extracted.parent.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 1
+  %"extracted.nitems.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 2
+  %"extracted.itemsize.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 3
+  %"extracted.data.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 4
+  %"extracted.shape.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 5
+  %".58" = extractvalue [2 x i64] %"extracted.shape.2", 0
+  %".59" = extractvalue [2 x i64] %"extracted.shape.2", 1
+  %"extracted.strides.2" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", 6
+  %".60" = extractvalue [2 x i64] %"extracted.strides.2", 0
+  %".61" = extractvalue [2 x i64] %"extracted.strides.2", 1
+  call void @"NRT_incref"(i8* %"extracted.meminfo.2")
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %"inserted.strides.2", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  store i64 %"arg.B1", i64* %"B1"
+  %".67" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"A"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".68"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".67", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".68"
+  %".72" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".68", i32 0, i32 5
+  %".73" = getelementptr inbounds [2 x i64], [2 x i64]* %".72", i32 0, i32 0
+  %".74" = load i64, i64* %".73", !range !0
+  %".75" = getelementptr inbounds [2 x i64], [2 x i64]* %".72", i32 0, i32 1
+  %".76" = load i64, i64* %".75", !range !0
+  %".77" = insertvalue [2 x i64] undef, i64 %".74", 0
+  %".78" = insertvalue [2 x i64] %".77", i64 %".76", 1
+  %".79" = extractvalue [2 x i64] %".78", 0
+  %".81" = load i64, i64* %"N"
+  store i64 %".79", i64* %"N"
+  %".83" = extractvalue [2 x i64] %".78", 0
+  %".84" = extractvalue [2 x i64] %".78", 1
+  %".85" = load i64, i64* %"N"
+  %".86" = load i64, i64* %"B1"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".87"
+  %".90" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".87", i32 0, i32 0
+  store i64 0, i64* %".90"
+  %".92" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".87", i32 0, i32 1
+  store i64 %".85", i64* %".92"
+  %".94" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".87", i32 0, i32 2
+  store i64 %".86", i64* %".94"
+  %".96" = load {i64, i64, i64}, {i64, i64, i64}* %".87"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".97"
+  store {i64, i64, i64} %".96", {i64, i64, i64}* %".97"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".101"
+  %".104" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".97", i32 0, i32 0
+  %".105" = load i64, i64* %".104"
+  %".106" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".97", i32 0, i32 1
+  %".107" = load i64, i64* %".106"
+  %".108" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".97", i32 0, i32 2
+  %".109" = load i64, i64* %".108"
+  store i64 %".105", i64* %".110"
+  %".115" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101", i32 0, i32 0
+  store i64* %".110", i64** %".115"
+  %".117" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101", i32 0, i32 1
+  store i64 %".107", i64* %".117"
+  %".119" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101", i32 0, i32 2
+  store i64 %".109", i64* %".119"
+  %".121" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101", i32 0, i32 3
+  store i64* %".113", i64** %".121"
+  %".123" = sub i64 %".107", %".105"
+  %".124" = icmp sgt i64 %".123", 0
+  %".125" = icmp sgt i64 %".109", 0
+  %".126" = xor i1 %".124", %".125"
+  %".127" = icmp eq i64 %".109", 0
+  br i1 %".127", label %"B0.if", label %"B0.endif", !prof !1
+B60:
+  %".157" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi60.0"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".158"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".161"
+  store {i64*, i64, i64, i64*} %".157", {i64*, i64, i64, i64*}* %".161"
+  %".165" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".161", i32 0, i32 3
+  %".166" = load i64*, i64** %".165"
+  %".167" = load i64, i64* %".166"
+  %".168" = icmp sgt i64 %".167", 0
+  %".169" = getelementptr inbounds {i64, i1}, {i64, i1}* %".158", i32 0, i32 1
+  store i1 %".168", i1* %".169"
+  br i1 %".168", label %"B60.if", label %"B60.endif"
+B64:
+  %".203" = load i64, i64* %"$phi64.1"
+  %".205" = load i64, i64* %"ii"
+  store i64 %".203", i64* %"ii"
+  %".207" = load i64, i64* %"$phi64.1"
+  store i64 0, i64* %"$phi64.1"
+  %".209" = load i64, i64* %"N"
+  %".210" = load i64, i64* %"B1"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".211"
+  %".214" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".211", i32 0, i32 0
+  store i64 0, i64* %".214"
+  %".216" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".211", i32 0, i32 1
+  store i64 %".209", i64* %".216"
+  %".218" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".211", i32 0, i32 2
+  store i64 %".210", i64* %".218"
+  %".220" = load {i64, i64, i64}, {i64, i64, i64}* %".211"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".221"
+  store {i64, i64, i64} %".220", {i64, i64, i64}* %".221"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".225"
+  %".228" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".221", i32 0, i32 0
+  %".229" = load i64, i64* %".228"
+  %".230" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".221", i32 0, i32 1
+  %".231" = load i64, i64* %".230"
+  %".232" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".221", i32 0, i32 2
+  %".233" = load i64, i64* %".232"
+  store i64 %".229", i64* %".234"
+  %".239" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225", i32 0, i32 0
+  store i64* %".234", i64** %".239"
+  %".241" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225", i32 0, i32 1
+  store i64 %".231", i64* %".241"
+  %".243" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225", i32 0, i32 2
+  store i64 %".233", i64* %".243"
+  %".245" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225", i32 0, i32 3
+  store i64* %".237", i64** %".245"
+  %".247" = sub i64 %".231", %".229"
+  %".248" = icmp sgt i64 %".247", 0
+  %".249" = icmp sgt i64 %".233", 0
+  %".250" = xor i1 %".248", %".249"
+  %".251" = icmp eq i64 %".233", 0
+  br i1 %".251", label %"B64.if", label %"B64.endif", !prof !1
+B92:
+  %".279" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi92.1"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".280"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".283"
+  store {i64*, i64, i64, i64*} %".279", {i64*, i64, i64, i64*}* %".283"
+  %".287" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".283", i32 0, i32 3
+  %".288" = load i64*, i64** %".287"
+  %".289" = load i64, i64* %".288"
+  %".290" = icmp sgt i64 %".289", 0
+  %".291" = getelementptr inbounds {i64, i1}, {i64, i1}* %".280", i32 0, i32 1
+  store i1 %".290", i1* %".291"
+  br i1 %".290", label %"B92.if", label %"B92.endif"
+B96:
+  %".325" = load i64, i64* %"$phi96.2"
+  %".327" = load i64, i64* %"jj"
+  store i64 %".325", i64* %"jj"
+  %".329" = load i64, i64* %"$phi96.2"
+  store i64 0, i64* %"$phi96.2"
+  %".331" = load i64, i64* %"N"
+  %".332" = load i64, i64* %"B1"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".333"
+  %".336" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".333", i32 0, i32 0
+  store i64 0, i64* %".336"
+  %".338" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".333", i32 0, i32 1
+  store i64 %".331", i64* %".338"
+  %".340" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".333", i32 0, i32 2
+  store i64 %".332", i64* %".340"
+  %".342" = load {i64, i64, i64}, {i64, i64, i64}* %".333"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".343"
+  store {i64, i64, i64} %".342", {i64, i64, i64}* %".343"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".347"
+  %".350" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".343", i32 0, i32 0
+  %".351" = load i64, i64* %".350"
+  %".352" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".343", i32 0, i32 1
+  %".353" = load i64, i64* %".352"
+  %".354" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".343", i32 0, i32 2
+  %".355" = load i64, i64* %".354"
+  store i64 %".351", i64* %".356"
+  %".361" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347", i32 0, i32 0
+  store i64* %".356", i64** %".361"
+  %".363" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347", i32 0, i32 1
+  store i64 %".353", i64* %".363"
+  %".365" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347", i32 0, i32 2
+  store i64 %".355", i64* %".365"
+  %".367" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347", i32 0, i32 3
+  store i64* %".359", i64** %".367"
+  %".369" = sub i64 %".353", %".351"
+  %".370" = icmp sgt i64 %".369", 0
+  %".371" = icmp sgt i64 %".355", 0
+  %".372" = xor i1 %".370", %".371"
+  %".373" = icmp eq i64 %".355", 0
+  br i1 %".373", label %"B96.if", label %"B96.endif", !prof !1
+B124:
+  %".401" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi124.2"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".402"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".405"
+  store {i64*, i64, i64, i64*} %".401", {i64*, i64, i64, i64*}* %".405"
+  %".409" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".405", i32 0, i32 3
+  %".410" = load i64*, i64** %".409"
+  %".411" = load i64, i64* %".410"
+  %".412" = icmp sgt i64 %".411", 0
+  %".413" = getelementptr inbounds {i64, i1}, {i64, i1}* %".402", i32 0, i32 1
+  store i1 %".412", i1* %".413"
+  br i1 %".412", label %"B124.if", label %"B124.endif"
+B128:
+  %".447" = load i64, i64* %"$phi128.3"
+  %".449" = load i64, i64* %"kk"
+  store i64 %".447", i64* %"kk"
+  %".451" = load i64, i64* %"$phi128.3"
+  store i64 0, i64* %"$phi128.3"
+  %".453" = load i64, i64* %"ii"
+  %".454" = load i64, i64* %"B1"
+  %".455" = add nsw i64 %".453", %".454"
+  %".456" = load i64, i64* %"N"
+  %".457" = icmp slt i64 %".456", %".455"
+  %".458" = select  i1 %".457", i64 %".456", i64 %".455"
+  %".459" = load i64, i64* %"ii"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".460"
+  %".463" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".460", i32 0, i32 0
+  store i64 %".459", i64* %".463"
+  %".465" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".460", i32 0, i32 1
+  store i64 %".458", i64* %".465"
+  %".467" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".460", i32 0, i32 2
+  store i64 1, i64* %".467"
+  %".469" = load {i64, i64, i64}, {i64, i64, i64}* %".460"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".470"
+  store {i64, i64, i64} %".469", {i64, i64, i64}* %".470"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".474"
+  %".477" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".470", i32 0, i32 0
+  %".478" = load i64, i64* %".477"
+  %".479" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".470", i32 0, i32 1
+  %".480" = load i64, i64* %".479"
+  %".481" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".470", i32 0, i32 2
+  %".482" = load i64, i64* %".481"
+  store i64 %".478", i64* %".483"
+  %".488" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474", i32 0, i32 0
+  store i64* %".483", i64** %".488"
+  %".490" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474", i32 0, i32 1
+  store i64 %".480", i64* %".490"
+  %".492" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474", i32 0, i32 2
+  store i64 %".482", i64* %".492"
+  %".494" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474", i32 0, i32 3
+  store i64* %".486", i64** %".494"
+  %".496" = sub i64 %".480", %".478"
+  %".497" = icmp sgt i64 %".496", 0
+  %".498" = icmp sgt i64 %".482", 0
+  %".499" = xor i1 %".497", %".498"
+  %".500" = icmp eq i64 %".482", 0
+  br i1 %".500", label %"B128.if", label %"B128.endif", !prof !1
+B180:
+  %".528" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi180.3"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".529"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".532"
+  store {i64*, i64, i64, i64*} %".528", {i64*, i64, i64, i64*}* %".532"
+  %".536" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".532", i32 0, i32 3
+  %".537" = load i64*, i64** %".536"
+  %".538" = load i64, i64* %".537"
+  %".539" = icmp sgt i64 %".538", 0
+  %".540" = getelementptr inbounds {i64, i1}, {i64, i1}* %".529", i32 0, i32 1
+  store i1 %".539", i1* %".540"
+  br i1 %".539", label %"B180.if", label %"B180.endif"
+B184:
+  %".574" = load i64, i64* %"$phi184.4"
+  %".576" = load i64, i64* %"i"
+  store i64 %".574", i64* %"i"
+  %".578" = load i64, i64* %"$phi184.4"
+  store i64 0, i64* %"$phi184.4"
+  %".580" = load i64, i64* %"jj"
+  %".581" = load i64, i64* %"B1"
+  %".582" = add nsw i64 %".580", %".581"
+  %".583" = load i64, i64* %"N"
+  %".584" = icmp slt i64 %".583", %".582"
+  %".585" = select  i1 %".584", i64 %".583", i64 %".582"
+  %".586" = load i64, i64* %"jj"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".587"
+  %".590" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".587", i32 0, i32 0
+  store i64 %".586", i64* %".590"
+  %".592" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".587", i32 0, i32 1
+  store i64 %".585", i64* %".592"
+  %".594" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".587", i32 0, i32 2
+  store i64 1, i64* %".594"
+  %".596" = load {i64, i64, i64}, {i64, i64, i64}* %".587"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".597"
+  store {i64, i64, i64} %".596", {i64, i64, i64}* %".597"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".601"
+  %".604" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".597", i32 0, i32 0
+  %".605" = load i64, i64* %".604"
+  %".606" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".597", i32 0, i32 1
+  %".607" = load i64, i64* %".606"
+  %".608" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".597", i32 0, i32 2
+  %".609" = load i64, i64* %".608"
+  store i64 %".605", i64* %".610"
+  %".615" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601", i32 0, i32 0
+  store i64* %".610", i64** %".615"
+  %".617" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601", i32 0, i32 1
+  store i64 %".607", i64* %".617"
+  %".619" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601", i32 0, i32 2
+  store i64 %".609", i64* %".619"
+  %".621" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601", i32 0, i32 3
+  store i64* %".613", i64** %".621"
+  %".623" = sub i64 %".607", %".605"
+  %".624" = icmp sgt i64 %".623", 0
+  %".625" = icmp sgt i64 %".609", 0
+  %".626" = xor i1 %".624", %".625"
+  %".627" = icmp eq i64 %".609", 0
+  br i1 %".627", label %"B184.if", label %"B184.endif", !prof !1
+B236:
+  %".655" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi236.4"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".656"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".659"
+  store {i64*, i64, i64, i64*} %".655", {i64*, i64, i64, i64*}* %".659"
+  %".663" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".659", i32 0, i32 3
+  %".664" = load i64*, i64** %".663"
+  %".665" = load i64, i64* %".664"
+  %".666" = icmp sgt i64 %".665", 0
+  %".667" = getelementptr inbounds {i64, i1}, {i64, i1}* %".656", i32 0, i32 1
+  store i1 %".666", i1* %".667"
+  br i1 %".666", label %"B236.if", label %"B236.endif"
+B240:
+  %".701" = load i64, i64* %"$phi240.5"
+  %".703" = load i64, i64* %"j"
+  store i64 %".701", i64* %"j"
+  %".705" = load i64, i64* %"$phi240.5"
+  store i64 0, i64* %"$phi240.5"
+  %".708" = load double, double* %"tmp.2"
+  store double              0x0, double* %"tmp.2"
+  %".710" = load i64, i64* %"kk"
+  %".711" = load i64, i64* %"B1"
+  %".712" = add nsw i64 %".710", %".711"
+  %".713" = load i64, i64* %"N"
+  %".714" = icmp slt i64 %".713", %".712"
+  %".715" = select  i1 %".714", i64 %".713", i64 %".712"
+  %".716" = load i64, i64* %"kk"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".717"
+  %".720" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".717", i32 0, i32 0
+  store i64 %".716", i64* %".720"
+  %".722" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".717", i32 0, i32 1
+  store i64 %".715", i64* %".722"
+  %".724" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".717", i32 0, i32 2
+  store i64 1, i64* %".724"
+  %".726" = load {i64, i64, i64}, {i64, i64, i64}* %".717"
+  store {i64, i64, i64} zeroinitializer, {i64, i64, i64}* %".727"
+  store {i64, i64, i64} %".726", {i64, i64, i64}* %".727"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".731"
+  %".734" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".727", i32 0, i32 0
+  %".735" = load i64, i64* %".734"
+  %".736" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".727", i32 0, i32 1
+  %".737" = load i64, i64* %".736"
+  %".738" = getelementptr inbounds {i64, i64, i64}, {i64, i64, i64}* %".727", i32 0, i32 2
+  %".739" = load i64, i64* %".738"
+  store i64 %".735", i64* %".740"
+  %".745" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731", i32 0, i32 0
+  store i64* %".740", i64** %".745"
+  %".747" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731", i32 0, i32 1
+  store i64 %".737", i64* %".747"
+  %".749" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731", i32 0, i32 2
+  store i64 %".739", i64* %".749"
+  %".751" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731", i32 0, i32 3
+  store i64* %".743", i64** %".751"
+  %".753" = sub i64 %".737", %".735"
+  %".754" = icmp sgt i64 %".753", 0
+  %".755" = icmp sgt i64 %".739", 0
+  %".756" = xor i1 %".754", %".755"
+  %".757" = icmp eq i64 %".739", 0
+  br i1 %".757", label %"B240.if", label %"B240.endif", !prof !1
+B296:
+  %".785" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi296.5"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".786"
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %".789"
+  store {i64*, i64, i64, i64*} %".785", {i64*, i64, i64, i64*}* %".789"
+  %".793" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".789", i32 0, i32 3
+  %".794" = load i64*, i64** %".793"
+  %".795" = load i64, i64* %".794"
+  %".796" = icmp sgt i64 %".795", 0
+  %".797" = getelementptr inbounds {i64, i1}, {i64, i1}* %".786", i32 0, i32 1
+  store i1 %".796", i1* %".797"
+  br i1 %".796", label %"B296.if", label %"B296.endif"
+B300:
+  %".831" = load i64, i64* %"$phi300.6"
+  %".832" = load i64, i64* %"$phi300.6"
+  store i64 0, i64* %"$phi300.6"
+  %".834" = load i64, i64* %"i"
+  %".835" = insertvalue [2 x i64] undef, i64 %".834", 0
+  %".836" = insertvalue [2 x i64] %".835", i64 %".831", 1
+  %".837" = extractvalue [2 x i64] %".836", 0
+  %".838" = extractvalue [2 x i64] %".836", 1
+  %".839" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"A"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".839", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840"
+  %".844" = extractvalue [2 x i64] %".836", 0
+  %".845" = extractvalue [2 x i64] %".836", 1
+  %".846" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840", i32 0, i32 5
+  %".847" = getelementptr inbounds [2 x i64], [2 x i64]* %".846", i32 0, i32 0
+  %".848" = load i64, i64* %".847", !range !0
+  %".849" = getelementptr inbounds [2 x i64], [2 x i64]* %".846", i32 0, i32 1
+  %".850" = load i64, i64* %".849", !range !0
+  %".851" = insertvalue [2 x i64] undef, i64 %".848", 0
+  %".852" = insertvalue [2 x i64] %".851", i64 %".850", 1
+  %".853" = extractvalue [2 x i64] %".852", 0
+  %".854" = extractvalue [2 x i64] %".852", 1
+  %".855" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840", i32 0, i32 6
+  %".856" = load [2 x i64], [2 x i64]* %".855"
+  %".857" = extractvalue [2 x i64] %".856", 0
+  %".858" = extractvalue [2 x i64] %".856", 1
+  %".859" = icmp slt i64 %".844", 0
+  %".860" = add i64 %".844", %".853"
+  %".861" = select  i1 %".859", i64 %".860", i64 %".844"
+  %".862" = icmp slt i64 %".845", 0
+  %".863" = add i64 %".845", %".854"
+  %".864" = select  i1 %".862", i64 %".863", i64 %".845"
+  %".865" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840", i32 0, i32 5
+  %".866" = getelementptr inbounds [2 x i64], [2 x i64]* %".865", i32 0, i32 0
+  %".867" = load i64, i64* %".866", !range !0
+  %".868" = getelementptr inbounds [2 x i64], [2 x i64]* %".865", i32 0, i32 1
+  %".869" = load i64, i64* %".868", !range !0
+  %".870" = insertvalue [2 x i64] undef, i64 %".867", 0
+  %".871" = insertvalue [2 x i64] %".870", i64 %".869", 1
+  %".872" = extractvalue [2 x i64] %".871", 0
+  %".873" = extractvalue [2 x i64] %".871", 1
+  %".874" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840", i32 0, i32 6
+  %".875" = load [2 x i64], [2 x i64]* %".874"
+  %".876" = extractvalue [2 x i64] %".875", 0
+  %".877" = extractvalue [2 x i64] %".875", 1
+  %".878" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".840", i32 0, i32 4
+  %".879" = load double*, double** %".878"
+  %".880" = mul i64 1, %".873"
+  %".881" = mul i64 %".861", %".880"
+  %".882" = add i64 0, %".881"
+  %".883" = mul i64 %".864", 1
+  %".884" = add i64 %".882", %".883"
+  %".885" = getelementptr double, double* %".879", i64 %".884"
+  %".886" = load double, double* %".885"
+  %".887" = extractvalue [2 x i64] %".836", 0
+  %".888" = extractvalue [2 x i64] %".836", 1
+  %".889" = load i64, i64* %"j"
+  %".890" = insertvalue [2 x i64] undef, i64 %".831", 0
+  %".891" = insertvalue [2 x i64] %".890", i64 %".889", 1
+  %".892" = extractvalue [2 x i64] %".891", 0
+  %".893" = extractvalue [2 x i64] %".891", 1
+  %".894" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"B"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".894", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895"
+  %".899" = extractvalue [2 x i64] %".891", 0
+  %".900" = extractvalue [2 x i64] %".891", 1
+  %".901" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895", i32 0, i32 5
+  %".902" = getelementptr inbounds [2 x i64], [2 x i64]* %".901", i32 0, i32 0
+  %".903" = load i64, i64* %".902", !range !0
+  %".904" = getelementptr inbounds [2 x i64], [2 x i64]* %".901", i32 0, i32 1
+  %".905" = load i64, i64* %".904", !range !0
+  %".906" = insertvalue [2 x i64] undef, i64 %".903", 0
+  %".907" = insertvalue [2 x i64] %".906", i64 %".905", 1
+  %".908" = extractvalue [2 x i64] %".907", 0
+  %".909" = extractvalue [2 x i64] %".907", 1
+  %".910" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895", i32 0, i32 6
+  %".911" = load [2 x i64], [2 x i64]* %".910"
+  %".912" = extractvalue [2 x i64] %".911", 0
+  %".913" = extractvalue [2 x i64] %".911", 1
+  %".914" = icmp slt i64 %".899", 0
+  %".915" = add i64 %".899", %".908"
+  %".916" = select  i1 %".914", i64 %".915", i64 %".899"
+  %".917" = icmp slt i64 %".900", 0
+  %".918" = add i64 %".900", %".909"
+  %".919" = select  i1 %".917", i64 %".918", i64 %".900"
+  %".920" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895", i32 0, i32 5
+  %".921" = getelementptr inbounds [2 x i64], [2 x i64]* %".920", i32 0, i32 0
+  %".922" = load i64, i64* %".921", !range !0
+  %".923" = getelementptr inbounds [2 x i64], [2 x i64]* %".920", i32 0, i32 1
+  %".924" = load i64, i64* %".923", !range !0
+  %".925" = insertvalue [2 x i64] undef, i64 %".922", 0
+  %".926" = insertvalue [2 x i64] %".925", i64 %".924", 1
+  %".927" = extractvalue [2 x i64] %".926", 0
+  %".928" = extractvalue [2 x i64] %".926", 1
+  %".929" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895", i32 0, i32 6
+  %".930" = load [2 x i64], [2 x i64]* %".929"
+  %".931" = extractvalue [2 x i64] %".930", 0
+  %".932" = extractvalue [2 x i64] %".930", 1
+  %".933" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".895", i32 0, i32 4
+  %".934" = load double*, double** %".933"
+  %".935" = mul i64 1, %".928"
+  %".936" = mul i64 %".916", %".935"
+  %".937" = add i64 0, %".936"
+  %".938" = mul i64 %".919", 1
+  %".939" = add i64 %".937", %".938"
+  %".940" = getelementptr double, double* %".934", i64 %".939"
+  %".941" = load double, double* %".940"
+  %".942" = extractvalue [2 x i64] %".891", 0
+  %".943" = extractvalue [2 x i64] %".891", 1
+  %".944" = fmul double %".886", %".941"
+  %".945" = load double, double* %"tmp.2"
+  %".946" = fadd double %".945", %".944"
+  %".947" = load double, double* %"tmp.2"
+  store double %".946", double* %"tmp.2"
+  br label %"B296"
+B340:
+  %".950" = load i64, i64* %"$phi300.6"
+  store i64 0, i64* %"$phi300.6"
+  %".952" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi296.5"
+  %"extracted.iter.18" = extractvalue {i64*, i64, i64, i64*} %".952", 0
+  %"extracted.stop.24" = extractvalue {i64*, i64, i64, i64*} %".952", 1
+  %"extracted.step.24" = extractvalue {i64*, i64, i64, i64*} %".952", 2
+  %"extracted.count.18" = extractvalue {i64*, i64, i64, i64*} %".952", 3
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi296.5"
+  %".954" = load i64, i64* %"i"
+  %".955" = load i64, i64* %"j"
+  %".956" = insertvalue [2 x i64] undef, i64 %".954", 0
+  %".957" = insertvalue [2 x i64] %".956", i64 %".955", 1
+  %".958" = extractvalue [2 x i64] %".957", 0
+  %".959" = extractvalue [2 x i64] %".957", 1
+  %".960" = load i64, i64* %"j"
+  store i64 0, i64* %"j"
+  %".962" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".962", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963"
+  %".967" = extractvalue [2 x i64] %".957", 0
+  %".968" = extractvalue [2 x i64] %".957", 1
+  %".969" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963", i32 0, i32 5
+  %".970" = getelementptr inbounds [2 x i64], [2 x i64]* %".969", i32 0, i32 0
+  %".971" = load i64, i64* %".970", !range !0
+  %".972" = getelementptr inbounds [2 x i64], [2 x i64]* %".969", i32 0, i32 1
+  %".973" = load i64, i64* %".972", !range !0
+  %".974" = insertvalue [2 x i64] undef, i64 %".971", 0
+  %".975" = insertvalue [2 x i64] %".974", i64 %".973", 1
+  %".976" = extractvalue [2 x i64] %".975", 0
+  %".977" = extractvalue [2 x i64] %".975", 1
+  %".978" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963", i32 0, i32 6
+  %".979" = load [2 x i64], [2 x i64]* %".978"
+  %".980" = extractvalue [2 x i64] %".979", 0
+  %".981" = extractvalue [2 x i64] %".979", 1
+  %".982" = icmp slt i64 %".967", 0
+  %".983" = add i64 %".967", %".976"
+  %".984" = select  i1 %".982", i64 %".983", i64 %".967"
+  %".985" = icmp slt i64 %".968", 0
+  %".986" = add i64 %".968", %".977"
+  %".987" = select  i1 %".985", i64 %".986", i64 %".968"
+  %".988" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963", i32 0, i32 5
+  %".989" = getelementptr inbounds [2 x i64], [2 x i64]* %".988", i32 0, i32 0
+  %".990" = load i64, i64* %".989", !range !0
+  %".991" = getelementptr inbounds [2 x i64], [2 x i64]* %".988", i32 0, i32 1
+  %".992" = load i64, i64* %".991", !range !0
+  %".993" = insertvalue [2 x i64] undef, i64 %".990", 0
+  %".994" = insertvalue [2 x i64] %".993", i64 %".992", 1
+  %".995" = extractvalue [2 x i64] %".994", 0
+  %".996" = extractvalue [2 x i64] %".994", 1
+  %".997" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963", i32 0, i32 6
+  %".998" = load [2 x i64], [2 x i64]* %".997"
+  %".999" = extractvalue [2 x i64] %".998", 0
+  %".1000" = extractvalue [2 x i64] %".998", 1
+  %".1001" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".963", i32 0, i32 4
+  %".1002" = load double*, double** %".1001"
+  %".1003" = mul i64 1, %".996"
+  %".1004" = mul i64 %".984", %".1003"
+  %".1005" = add i64 0, %".1004"
+  %".1006" = mul i64 %".987", 1
+  %".1007" = add i64 %".1005", %".1006"
+  %".1008" = getelementptr double, double* %".1002", i64 %".1007"
+  %".1009" = load double, double* %".1008"
+  %".1010" = load double, double* %"tmp.2"
+  %".1011" = fadd double %".1009", %".1010"
+  %".1012" = load double, double* %"tmp.2"
+  store double 0.0, double* %"tmp.2"
+  %".1014" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  %".1015" = extractvalue [2 x i64] %".957", 0
+  %".1016" = extractvalue [2 x i64] %".957", 1
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017"
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1014", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017"
+  %".1021" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017", i32 0, i32 5
+  %".1022" = getelementptr inbounds [2 x i64], [2 x i64]* %".1021", i32 0, i32 0
+  %".1023" = load i64, i64* %".1022", !range !0
+  %".1024" = getelementptr inbounds [2 x i64], [2 x i64]* %".1021", i32 0, i32 1
+  %".1025" = load i64, i64* %".1024", !range !0
+  %".1026" = insertvalue [2 x i64] undef, i64 %".1023", 0
+  %".1027" = insertvalue [2 x i64] %".1026", i64 %".1025", 1
+  %".1028" = extractvalue [2 x i64] %".1027", 0
+  %".1029" = extractvalue [2 x i64] %".1027", 1
+  %".1030" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017", i32 0, i32 6
+  %".1031" = load [2 x i64], [2 x i64]* %".1030"
+  %".1032" = extractvalue [2 x i64] %".1031", 0
+  %".1033" = extractvalue [2 x i64] %".1031", 1
+  %".1034" = icmp slt i64 %".1015", 0
+  %".1035" = add i64 %".1015", %".1028"
+  %".1036" = select  i1 %".1034", i64 %".1035", i64 %".1015"
+  %".1037" = icmp slt i64 %".1016", 0
+  %".1038" = add i64 %".1016", %".1029"
+  %".1039" = select  i1 %".1037", i64 %".1038", i64 %".1016"
+  %".1040" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017", i32 0, i32 5
+  %".1041" = getelementptr inbounds [2 x i64], [2 x i64]* %".1040", i32 0, i32 0
+  %".1042" = load i64, i64* %".1041", !range !0
+  %".1043" = getelementptr inbounds [2 x i64], [2 x i64]* %".1040", i32 0, i32 1
+  %".1044" = load i64, i64* %".1043", !range !0
+  %".1045" = insertvalue [2 x i64] undef, i64 %".1042", 0
+  %".1046" = insertvalue [2 x i64] %".1045", i64 %".1044", 1
+  %".1047" = extractvalue [2 x i64] %".1046", 0
+  %".1048" = extractvalue [2 x i64] %".1046", 1
+  %".1049" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017", i32 0, i32 6
+  %".1050" = load [2 x i64], [2 x i64]* %".1049"
+  %".1051" = extractvalue [2 x i64] %".1050", 0
+  %".1052" = extractvalue [2 x i64] %".1050", 1
+  %".1053" = getelementptr inbounds {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %".1017", i32 0, i32 4
+  %".1054" = load double*, double** %".1053"
+  %".1055" = mul i64 1, %".1048"
+  %".1056" = mul i64 %".1036", %".1055"
+  %".1057" = add i64 0, %".1056"
+  %".1058" = mul i64 %".1039", 1
+  %".1059" = add i64 %".1057", %".1058"
+  %".1060" = getelementptr double, double* %".1054", i64 %".1059"
+  store double %".1011", double* %".1060"
+  %".1062" = extractvalue [2 x i64] %".957", 0
+  %".1063" = extractvalue [2 x i64] %".957", 1
+  br label %"B236"
+B374:
+  %".1065" = load i64, i64* %"i"
+  store i64 0, i64* %"i"
+  %".1067" = load i64, i64* %"$phi240.5"
+  store i64 0, i64* %"$phi240.5"
+  %".1069" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi236.4"
+  %"extracted.iter.19" = extractvalue {i64*, i64, i64, i64*} %".1069", 0
+  %"extracted.stop.25" = extractvalue {i64*, i64, i64, i64*} %".1069", 1
+  %"extracted.step.25" = extractvalue {i64*, i64, i64, i64*} %".1069", 2
+  %"extracted.count.19" = extractvalue {i64*, i64, i64, i64*} %".1069", 3
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi236.4"
+  br label %"B180"
+B378:
+  %".1072" = load i64, i64* %"kk"
+  store i64 0, i64* %"kk"
+  %".1074" = load i64, i64* %"$phi184.4"
+  store i64 0, i64* %"$phi184.4"
+  %".1076" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi180.3"
+  %"extracted.iter.20" = extractvalue {i64*, i64, i64, i64*} %".1076", 0
+  %"extracted.stop.26" = extractvalue {i64*, i64, i64, i64*} %".1076", 1
+  %"extracted.step.26" = extractvalue {i64*, i64, i64, i64*} %".1076", 2
+  %"extracted.count.20" = extractvalue {i64*, i64, i64, i64*} %".1076", 3
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi180.3"
+  br label %"B124"
+B382:
+  %".1079" = load i64, i64* %"jj"
+  store i64 0, i64* %"jj"
+  %".1081" = load i64, i64* %"$phi128.3"
+  store i64 0, i64* %"$phi128.3"
+  %".1083" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi124.2"
+  %"extracted.iter.21" = extractvalue {i64*, i64, i64, i64*} %".1083", 0
+  %"extracted.stop.27" = extractvalue {i64*, i64, i64, i64*} %".1083", 1
+  %"extracted.step.27" = extractvalue {i64*, i64, i64, i64*} %".1083", 2
+  %"extracted.count.21" = extractvalue {i64*, i64, i64, i64*} %".1083", 3
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi124.2"
+  br label %"B92"
+B386:
+  %".1086" = load i64, i64* %"ii"
+  store i64 0, i64* %"ii"
+  %".1088" = load i64, i64* %"$phi96.2"
+  store i64 0, i64* %"$phi96.2"
+  %".1090" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi92.1"
+  %"extracted.iter.22" = extractvalue {i64*, i64, i64, i64*} %".1090", 0
+  %"extracted.stop.28" = extractvalue {i64*, i64, i64, i64*} %".1090", 1
+  %"extracted.step.28" = extractvalue {i64*, i64, i64, i64*} %".1090", 2
+  %"extracted.count.22" = extractvalue {i64*, i64, i64, i64*} %".1090", 3
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi92.1"
+  br label %"B60"
+B390:
+  %".1093" = load i64, i64* %"N"
+  store i64 0, i64* %"N"
+  %".1095" = load i64, i64* %"B1"
+  store i64 0, i64* %"B1"
+  %".1097" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"B"
+  %"extracted.meminfo.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 0
+  %"extracted.parent.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 1
+  %"extracted.nitems.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 2
+  %"extracted.itemsize.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 3
+  %"extracted.data.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 4
+  %"extracted.shape.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 5
+  %".1098" = extractvalue [2 x i64] %"extracted.shape.3", 0
+  %".1099" = extractvalue [2 x i64] %"extracted.shape.3", 1
+  %"extracted.strides.3" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1097", 6
+  %".1100" = extractvalue [2 x i64] %"extracted.strides.3", 0
+  %".1101" = extractvalue [2 x i64] %"extracted.strides.3", 1
+  call void @"NRT_decref"(i8* %"extracted.meminfo.3")
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"B"
+  %".1104" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"A"
+  %"extracted.meminfo.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 0
+  %"extracted.parent.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 1
+  %"extracted.nitems.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 2
+  %"extracted.itemsize.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 3
+  %"extracted.data.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 4
+  %"extracted.shape.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 5
+  %".1105" = extractvalue [2 x i64] %"extracted.shape.4", 0
+  %".1106" = extractvalue [2 x i64] %"extracted.shape.4", 1
+  %"extracted.strides.4" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1104", 6
+  %".1107" = extractvalue [2 x i64] %"extracted.strides.4", 0
+  %".1108" = extractvalue [2 x i64] %"extracted.strides.4", 1
+  call void @"NRT_decref"(i8* %"extracted.meminfo.4")
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"A"
+  %".1111" = load i64, i64* %"$phi64.1"
+  store i64 0, i64* %"$phi64.1"
+  %".1113" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi60.0"
+  %"extracted.iter.23" = extractvalue {i64*, i64, i64, i64*} %".1113", 0
+  %"extracted.stop.29" = extractvalue {i64*, i64, i64, i64*} %".1113", 1
+  %"extracted.step.29" = extractvalue {i64*, i64, i64, i64*} %".1113", 2
+  %"extracted.count.23" = extractvalue {i64*, i64, i64, i64*} %".1113", 3
+  store {i64*, i64, i64, i64*} zeroinitializer, {i64*, i64, i64, i64*}* %"$phi60.0"
+  %".1115" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  %"extracted.meminfo.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 0
+  %"extracted.parent.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 1
+  %"extracted.nitems.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 2
+  %"extracted.itemsize.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 3
+  %"extracted.data.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 4
+  %"extracted.shape.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 5
+  %".1116" = extractvalue [2 x i64] %"extracted.shape.5", 0
+  %".1117" = extractvalue [2 x i64] %"extracted.shape.5", 1
+  %"extracted.strides.5" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 6
+  %".1118" = extractvalue [2 x i64] %"extracted.strides.5", 0
+  %".1119" = extractvalue [2 x i64] %"extracted.strides.5", 1
+  call void @"NRT_incref"(i8* %"extracted.meminfo.5")
+  %".1121" = load {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  %"extracted.meminfo.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 0
+  %"extracted.parent.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 1
+  %"extracted.nitems.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 2
+  %"extracted.itemsize.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 3
+  %"extracted.data.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 4
+  %"extracted.shape.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 5
+  %".1122" = extractvalue [2 x i64] %"extracted.shape.6", 0
+  %".1123" = extractvalue [2 x i64] %"extracted.shape.6", 1
+  %"extracted.strides.6" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1121", 6
+  %".1124" = extractvalue [2 x i64] %"extracted.strides.6", 0
+  %".1125" = extractvalue [2 x i64] %"extracted.strides.6", 1
+  call void @"NRT_decref"(i8* %"extracted.meminfo.6")
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} zeroinitializer, {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"C"
+  %"extracted.meminfo.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 0
+  %"extracted.parent.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 1
+  %"extracted.nitems.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 2
+  %"extracted.itemsize.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 3
+  %"extracted.data.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 4
+  %"extracted.shape.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 5
+  %".1128" = extractvalue [2 x i64] %"extracted.shape.7", 0
+  %".1129" = insertvalue [2 x i64] undef, i64 %".1128", 0
+  %".1130" = extractvalue [2 x i64] %"extracted.shape.7", 1
+  %".1131" = insertvalue [2 x i64] %".1129", i64 %".1130", 1
+  %"extracted.strides.7" = extractvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1115", 6
+  %".1132" = extractvalue [2 x i64] %"extracted.strides.7", 0
+  %".1133" = insertvalue [2 x i64] undef, i64 %".1132", 0
+  %".1134" = extractvalue [2 x i64] %"extracted.strides.7", 1
+  %".1135" = insertvalue [2 x i64] %".1133", i64 %".1134", 1
+  %".1136" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} undef, i8* %"extracted.meminfo.7", 0
+  %".1137" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1136", i8* %"extracted.parent.7", 1
+  %".1138" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1137", i64 %"extracted.nitems.7", 2
+  %".1139" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1138", i64 %"extracted.itemsize.7", 3
+  %".1140" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1139", double* %"extracted.data.7", 4
+  %".1141" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1140", [2 x i64] %".1131", 5
+  %".1142" = insertvalue {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1141", [2 x i64] %".1135", 6
+  store {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]} %".1142", {i8*, i8*, i64, i64, double*, [2 x i64], [2 x i64]}* %"retptr"
+  ret i32 0
+B0.if:
+  store {i8*, i32, i8*, i8*, i32}* @".const.picklebuf.136547745386624", {i8*, i32, i8*, i8*, i32}** %"excinfo", !numba_exception_output !2
+  store i64 0, i64* %"try_state"
+  %".132" = load i64, i64* %"try_state"
+  %".133" = icmp ugt i64 %".132", 0
+  %".134" = load {i8*, i32, i8*, i8*, i32}*, {i8*, i32, i8*, i8*, i32}** %"excinfo"
+  ret i32 1
+B0.endif:
+  br i1 %".126", label %"B0.endif.if", label %"B0.endif.else"
+B0.endif.if:
+  %".137" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101", i32 0, i32 3
+  %".138" = load i64*, i64** %".137"
+  store i64 0, i64* %".138"
+  br label %"B0.endif.endif"
+B0.endif.else:
+  %".141" = srem i64 %".123", %".109"
+  %".142" = sub i64 0, %".141"
+  %".143" = select  i1 %".124", i64 %".141", i64 %".142"
+  %".144" = icmp sgt i64 %".143", 0
+  %".145" = sdiv i64 %".123", %".109"
+  %".146" = select  i1 %".144", i64 1, i64 0
+  %".147" = add i64 %".145", %".146"
+  %".148" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101", i32 0, i32 3
+  %".149" = load i64*, i64** %".148"
+  store i64 %".147", i64* %".149"
+  br label %"B0.endif.endif"
+B0.endif.endif:
+  %".152" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".101"
+  %"extracted.start" = extractvalue {i64, i64, i64} %".96", 0
+  %"extracted.stop" = extractvalue {i64, i64, i64} %".96", 1
+  %"extracted.step" = extractvalue {i64, i64, i64} %".96", 2
+  %"extracted.iter" = extractvalue {i64*, i64, i64, i64*} %".152", 0
+  %"extracted.stop.1" = extractvalue {i64*, i64, i64, i64*} %".152", 1
+  %"extracted.step.1" = extractvalue {i64*, i64, i64, i64*} %".152", 2
+  %"extracted.count" = extractvalue {i64*, i64, i64, i64*} %".152", 3
+  %".154" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi60.0"
+  %"extracted.iter.1" = extractvalue {i64*, i64, i64, i64*} %".154", 0
+  %"extracted.stop.2" = extractvalue {i64*, i64, i64, i64*} %".154", 1
+  %"extracted.step.2" = extractvalue {i64*, i64, i64, i64*} %".154", 2
+  %"extracted.count.1" = extractvalue {i64*, i64, i64, i64*} %".154", 3
+  store {i64*, i64, i64, i64*} %".152", {i64*, i64, i64, i64*}* %"$phi60.0"
+  %"extracted.iter.2" = extractvalue {i64*, i64, i64, i64*} %".152", 0
+  %"extracted.stop.3" = extractvalue {i64*, i64, i64, i64*} %".152", 1
+  %"extracted.step.3" = extractvalue {i64*, i64, i64, i64*} %".152", 2
+  %"extracted.count.2" = extractvalue {i64*, i64, i64, i64*} %".152", 3
+  br label %"B60"
+B60.if:
+  %".172" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".161", i32 0, i32 0
+  %".173" = load i64*, i64** %".172"
+  %".174" = load i64, i64* %".173"
+  %".175" = getelementptr inbounds {i64, i1}, {i64, i1}* %".158", i32 0, i32 0
+  store i64 %".174", i64* %".175"
+  %".177" = sub nsw i64 %".167", 1
+  store i64 %".177", i64* %".166"
+  %".179" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".161", i32 0, i32 2
+  %".180" = load i64, i64* %".179"
+  %".181" = add i64 %".174", %".180"
+  %".182" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".161", i32 0, i32 0
+  %".183" = load i64*, i64** %".182"
+  store i64 %".181", i64* %".183"
+  br label %"B60.endif"
+B60.endif:
+  %".186" = load {i64, i1}, {i64, i1}* %".158"
+  %"extracted.first" = extractvalue {i64, i1} %".186", 0
+  %"extracted.second" = extractvalue {i64, i1} %".186", 1
+  store {i64, i1} zeroinitializer, {i64, i1}* %".187"
+  store {i64, i1} %".186", {i64, i1}* %".187"
+  %".191" = getelementptr inbounds {i64, i1}, {i64, i1}* %".187", i32 0, i32 0
+  %".192" = load i64, i64* %".191"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".193"
+  store {i64, i1} %".186", {i64, i1}* %".193"
+  %".197" = getelementptr inbounds {i64, i1}, {i64, i1}* %".193", i32 0, i32 1
+  %".198" = load i1, i1* %".197"
+  %"extracted.first.1" = extractvalue {i64, i1} %".186", 0
+  %"extracted.second.1" = extractvalue {i64, i1} %".186", 1
+  %".200" = load i64, i64* %"$phi64.1"
+  store i64 %".192", i64* %"$phi64.1"
+  br i1 %".198", label %"B64", label %"B390"
+B64.if:
+  store {i8*, i32, i8*, i8*, i32}* @".const.picklebuf.136547745386624", {i8*, i32, i8*, i8*, i32}** %"excinfo", !numba_exception_output !2
+  %".254" = load i64, i64* %"try_state"
+  %".255" = icmp ugt i64 %".254", 0
+  %".256" = load {i8*, i32, i8*, i8*, i32}*, {i8*, i32, i8*, i8*, i32}** %"excinfo"
+  ret i32 1
+B64.endif:
+  br i1 %".250", label %"B64.endif.if", label %"B64.endif.else"
+B64.endif.if:
+  %".259" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225", i32 0, i32 3
+  %".260" = load i64*, i64** %".259"
+  store i64 0, i64* %".260"
+  br label %"B64.endif.endif"
+B64.endif.else:
+  %".263" = srem i64 %".247", %".233"
+  %".264" = sub i64 0, %".263"
+  %".265" = select  i1 %".248", i64 %".263", i64 %".264"
+  %".266" = icmp sgt i64 %".265", 0
+  %".267" = sdiv i64 %".247", %".233"
+  %".268" = select  i1 %".266", i64 1, i64 0
+  %".269" = add i64 %".267", %".268"
+  %".270" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225", i32 0, i32 3
+  %".271" = load i64*, i64** %".270"
+  store i64 %".269", i64* %".271"
+  br label %"B64.endif.endif"
+B64.endif.endif:
+  %".274" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".225"
+  %"extracted.start.1" = extractvalue {i64, i64, i64} %".220", 0
+  %"extracted.stop.4" = extractvalue {i64, i64, i64} %".220", 1
+  %"extracted.step.4" = extractvalue {i64, i64, i64} %".220", 2
+  %"extracted.iter.3" = extractvalue {i64*, i64, i64, i64*} %".274", 0
+  %"extracted.stop.5" = extractvalue {i64*, i64, i64, i64*} %".274", 1
+  %"extracted.step.5" = extractvalue {i64*, i64, i64, i64*} %".274", 2
+  %"extracted.count.3" = extractvalue {i64*, i64, i64, i64*} %".274", 3
+  %".276" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi92.1"
+  %"extracted.iter.4" = extractvalue {i64*, i64, i64, i64*} %".276", 0
+  %"extracted.stop.6" = extractvalue {i64*, i64, i64, i64*} %".276", 1
+  %"extracted.step.6" = extractvalue {i64*, i64, i64, i64*} %".276", 2
+  %"extracted.count.4" = extractvalue {i64*, i64, i64, i64*} %".276", 3
+  store {i64*, i64, i64, i64*} %".274", {i64*, i64, i64, i64*}* %"$phi92.1"
+  %"extracted.iter.5" = extractvalue {i64*, i64, i64, i64*} %".274", 0
+  %"extracted.stop.7" = extractvalue {i64*, i64, i64, i64*} %".274", 1
+  %"extracted.step.7" = extractvalue {i64*, i64, i64, i64*} %".274", 2
+  %"extracted.count.5" = extractvalue {i64*, i64, i64, i64*} %".274", 3
+  br label %"B92"
+B92.if:
+  %".294" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".283", i32 0, i32 0
+  %".295" = load i64*, i64** %".294"
+  %".296" = load i64, i64* %".295"
+  %".297" = getelementptr inbounds {i64, i1}, {i64, i1}* %".280", i32 0, i32 0
+  store i64 %".296", i64* %".297"
+  %".299" = sub nsw i64 %".289", 1
+  store i64 %".299", i64* %".288"
+  %".301" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".283", i32 0, i32 2
+  %".302" = load i64, i64* %".301"
+  %".303" = add i64 %".296", %".302"
+  %".304" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".283", i32 0, i32 0
+  %".305" = load i64*, i64** %".304"
+  store i64 %".303", i64* %".305"
+  br label %"B92.endif"
+B92.endif:
+  %".308" = load {i64, i1}, {i64, i1}* %".280"
+  %"extracted.first.2" = extractvalue {i64, i1} %".308", 0
+  %"extracted.second.2" = extractvalue {i64, i1} %".308", 1
+  store {i64, i1} zeroinitializer, {i64, i1}* %".309"
+  store {i64, i1} %".308", {i64, i1}* %".309"
+  %".313" = getelementptr inbounds {i64, i1}, {i64, i1}* %".309", i32 0, i32 0
+  %".314" = load i64, i64* %".313"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".315"
+  store {i64, i1} %".308", {i64, i1}* %".315"
+  %".319" = getelementptr inbounds {i64, i1}, {i64, i1}* %".315", i32 0, i32 1
+  %".320" = load i1, i1* %".319"
+  %"extracted.first.3" = extractvalue {i64, i1} %".308", 0
+  %"extracted.second.3" = extractvalue {i64, i1} %".308", 1
+  %".322" = load i64, i64* %"$phi96.2"
+  store i64 %".314", i64* %"$phi96.2"
+  br i1 %".320", label %"B96", label %"B386"
+B96.if:
+  store {i8*, i32, i8*, i8*, i32}* @".const.picklebuf.136547745386624", {i8*, i32, i8*, i8*, i32}** %"excinfo", !numba_exception_output !2
+  %".376" = load i64, i64* %"try_state"
+  %".377" = icmp ugt i64 %".376", 0
+  %".378" = load {i8*, i32, i8*, i8*, i32}*, {i8*, i32, i8*, i8*, i32}** %"excinfo"
+  ret i32 1
+B96.endif:
+  br i1 %".372", label %"B96.endif.if", label %"B96.endif.else"
+B96.endif.if:
+  %".381" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347", i32 0, i32 3
+  %".382" = load i64*, i64** %".381"
+  store i64 0, i64* %".382"
+  br label %"B96.endif.endif"
+B96.endif.else:
+  %".385" = srem i64 %".369", %".355"
+  %".386" = sub i64 0, %".385"
+  %".387" = select  i1 %".370", i64 %".385", i64 %".386"
+  %".388" = icmp sgt i64 %".387", 0
+  %".389" = sdiv i64 %".369", %".355"
+  %".390" = select  i1 %".388", i64 1, i64 0
+  %".391" = add i64 %".389", %".390"
+  %".392" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347", i32 0, i32 3
+  %".393" = load i64*, i64** %".392"
+  store i64 %".391", i64* %".393"
+  br label %"B96.endif.endif"
+B96.endif.endif:
+  %".396" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".347"
+  %"extracted.start.2" = extractvalue {i64, i64, i64} %".342", 0
+  %"extracted.stop.8" = extractvalue {i64, i64, i64} %".342", 1
+  %"extracted.step.8" = extractvalue {i64, i64, i64} %".342", 2
+  %"extracted.iter.6" = extractvalue {i64*, i64, i64, i64*} %".396", 0
+  %"extracted.stop.9" = extractvalue {i64*, i64, i64, i64*} %".396", 1
+  %"extracted.step.9" = extractvalue {i64*, i64, i64, i64*} %".396", 2
+  %"extracted.count.6" = extractvalue {i64*, i64, i64, i64*} %".396", 3
+  %".398" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi124.2"
+  %"extracted.iter.7" = extractvalue {i64*, i64, i64, i64*} %".398", 0
+  %"extracted.stop.10" = extractvalue {i64*, i64, i64, i64*} %".398", 1
+  %"extracted.step.10" = extractvalue {i64*, i64, i64, i64*} %".398", 2
+  %"extracted.count.7" = extractvalue {i64*, i64, i64, i64*} %".398", 3
+  store {i64*, i64, i64, i64*} %".396", {i64*, i64, i64, i64*}* %"$phi124.2"
+  %"extracted.iter.8" = extractvalue {i64*, i64, i64, i64*} %".396", 0
+  %"extracted.stop.11" = extractvalue {i64*, i64, i64, i64*} %".396", 1
+  %"extracted.step.11" = extractvalue {i64*, i64, i64, i64*} %".396", 2
+  %"extracted.count.8" = extractvalue {i64*, i64, i64, i64*} %".396", 3
+  br label %"B124"
+B124.if:
+  %".416" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".405", i32 0, i32 0
+  %".417" = load i64*, i64** %".416"
+  %".418" = load i64, i64* %".417"
+  %".419" = getelementptr inbounds {i64, i1}, {i64, i1}* %".402", i32 0, i32 0
+  store i64 %".418", i64* %".419"
+  %".421" = sub nsw i64 %".411", 1
+  store i64 %".421", i64* %".410"
+  %".423" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".405", i32 0, i32 2
+  %".424" = load i64, i64* %".423"
+  %".425" = add i64 %".418", %".424"
+  %".426" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".405", i32 0, i32 0
+  %".427" = load i64*, i64** %".426"
+  store i64 %".425", i64* %".427"
+  br label %"B124.endif"
+B124.endif:
+  %".430" = load {i64, i1}, {i64, i1}* %".402"
+  %"extracted.first.4" = extractvalue {i64, i1} %".430", 0
+  %"extracted.second.4" = extractvalue {i64, i1} %".430", 1
+  store {i64, i1} zeroinitializer, {i64, i1}* %".431"
+  store {i64, i1} %".430", {i64, i1}* %".431"
+  %".435" = getelementptr inbounds {i64, i1}, {i64, i1}* %".431", i32 0, i32 0
+  %".436" = load i64, i64* %".435"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".437"
+  store {i64, i1} %".430", {i64, i1}* %".437"
+  %".441" = getelementptr inbounds {i64, i1}, {i64, i1}* %".437", i32 0, i32 1
+  %".442" = load i1, i1* %".441"
+  %"extracted.first.5" = extractvalue {i64, i1} %".430", 0
+  %"extracted.second.5" = extractvalue {i64, i1} %".430", 1
+  %".444" = load i64, i64* %"$phi128.3"
+  store i64 %".436", i64* %"$phi128.3"
+  br i1 %".442", label %"B128", label %"B382"
+B128.if:
+  store {i8*, i32, i8*, i8*, i32}* @".const.picklebuf.136547745386624", {i8*, i32, i8*, i8*, i32}** %"excinfo", !numba_exception_output !2
+  %".503" = load i64, i64* %"try_state"
+  %".504" = icmp ugt i64 %".503", 0
+  %".505" = load {i8*, i32, i8*, i8*, i32}*, {i8*, i32, i8*, i8*, i32}** %"excinfo"
+  ret i32 1
+B128.endif:
+  br i1 %".499", label %"B128.endif.if", label %"B128.endif.else"
+B128.endif.if:
+  %".508" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474", i32 0, i32 3
+  %".509" = load i64*, i64** %".508"
+  store i64 0, i64* %".509"
+  br label %"B128.endif.endif"
+B128.endif.else:
+  %".512" = srem i64 %".496", %".482"
+  %".513" = sub i64 0, %".512"
+  %".514" = select  i1 %".497", i64 %".512", i64 %".513"
+  %".515" = icmp sgt i64 %".514", 0
+  %".516" = sdiv i64 %".496", %".482"
+  %".517" = select  i1 %".515", i64 1, i64 0
+  %".518" = add i64 %".516", %".517"
+  %".519" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474", i32 0, i32 3
+  %".520" = load i64*, i64** %".519"
+  store i64 %".518", i64* %".520"
+  br label %"B128.endif.endif"
+B128.endif.endif:
+  %".523" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".474"
+  %"extracted.start.3" = extractvalue {i64, i64, i64} %".469", 0
+  %"extracted.stop.12" = extractvalue {i64, i64, i64} %".469", 1
+  %"extracted.step.12" = extractvalue {i64, i64, i64} %".469", 2
+  %"extracted.iter.9" = extractvalue {i64*, i64, i64, i64*} %".523", 0
+  %"extracted.stop.13" = extractvalue {i64*, i64, i64, i64*} %".523", 1
+  %"extracted.step.13" = extractvalue {i64*, i64, i64, i64*} %".523", 2
+  %"extracted.count.9" = extractvalue {i64*, i64, i64, i64*} %".523", 3
+  %".525" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi180.3"
+  %"extracted.iter.10" = extractvalue {i64*, i64, i64, i64*} %".525", 0
+  %"extracted.stop.14" = extractvalue {i64*, i64, i64, i64*} %".525", 1
+  %"extracted.step.14" = extractvalue {i64*, i64, i64, i64*} %".525", 2
+  %"extracted.count.10" = extractvalue {i64*, i64, i64, i64*} %".525", 3
+  store {i64*, i64, i64, i64*} %".523", {i64*, i64, i64, i64*}* %"$phi180.3"
+  %"extracted.iter.11" = extractvalue {i64*, i64, i64, i64*} %".523", 0
+  %"extracted.stop.15" = extractvalue {i64*, i64, i64, i64*} %".523", 1
+  %"extracted.step.15" = extractvalue {i64*, i64, i64, i64*} %".523", 2
+  %"extracted.count.11" = extractvalue {i64*, i64, i64, i64*} %".523", 3
+  br label %"B180"
+B180.if:
+  %".543" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".532", i32 0, i32 0
+  %".544" = load i64*, i64** %".543"
+  %".545" = load i64, i64* %".544"
+  %".546" = getelementptr inbounds {i64, i1}, {i64, i1}* %".529", i32 0, i32 0
+  store i64 %".545", i64* %".546"
+  %".548" = sub nsw i64 %".538", 1
+  store i64 %".548", i64* %".537"
+  %".550" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".532", i32 0, i32 2
+  %".551" = load i64, i64* %".550"
+  %".552" = add i64 %".545", %".551"
+  %".553" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".532", i32 0, i32 0
+  %".554" = load i64*, i64** %".553"
+  store i64 %".552", i64* %".554"
+  br label %"B180.endif"
+B180.endif:
+  %".557" = load {i64, i1}, {i64, i1}* %".529"
+  %"extracted.first.6" = extractvalue {i64, i1} %".557", 0
+  %"extracted.second.6" = extractvalue {i64, i1} %".557", 1
+  store {i64, i1} zeroinitializer, {i64, i1}* %".558"
+  store {i64, i1} %".557", {i64, i1}* %".558"
+  %".562" = getelementptr inbounds {i64, i1}, {i64, i1}* %".558", i32 0, i32 0
+  %".563" = load i64, i64* %".562"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".564"
+  store {i64, i1} %".557", {i64, i1}* %".564"
+  %".568" = getelementptr inbounds {i64, i1}, {i64, i1}* %".564", i32 0, i32 1
+  %".569" = load i1, i1* %".568"
+  %"extracted.first.7" = extractvalue {i64, i1} %".557", 0
+  %"extracted.second.7" = extractvalue {i64, i1} %".557", 1
+  %".571" = load i64, i64* %"$phi184.4"
+  store i64 %".563", i64* %"$phi184.4"
+  br i1 %".569", label %"B184", label %"B378"
+B184.if:
+  store {i8*, i32, i8*, i8*, i32}* @".const.picklebuf.136547745386624", {i8*, i32, i8*, i8*, i32}** %"excinfo", !numba_exception_output !2
+  %".630" = load i64, i64* %"try_state"
+  %".631" = icmp ugt i64 %".630", 0
+  %".632" = load {i8*, i32, i8*, i8*, i32}*, {i8*, i32, i8*, i8*, i32}** %"excinfo"
+  ret i32 1
+B184.endif:
+  br i1 %".626", label %"B184.endif.if", label %"B184.endif.else"
+B184.endif.if:
+  %".635" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601", i32 0, i32 3
+  %".636" = load i64*, i64** %".635"
+  store i64 0, i64* %".636"
+  br label %"B184.endif.endif"
+B184.endif.else:
+  %".639" = srem i64 %".623", %".609"
+  %".640" = sub i64 0, %".639"
+  %".641" = select  i1 %".624", i64 %".639", i64 %".640"
+  %".642" = icmp sgt i64 %".641", 0
+  %".643" = sdiv i64 %".623", %".609"
+  %".644" = select  i1 %".642", i64 1, i64 0
+  %".645" = add i64 %".643", %".644"
+  %".646" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601", i32 0, i32 3
+  %".647" = load i64*, i64** %".646"
+  store i64 %".645", i64* %".647"
+  br label %"B184.endif.endif"
+B184.endif.endif:
+  %".650" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".601"
+  %"extracted.start.4" = extractvalue {i64, i64, i64} %".596", 0
+  %"extracted.stop.16" = extractvalue {i64, i64, i64} %".596", 1
+  %"extracted.step.16" = extractvalue {i64, i64, i64} %".596", 2
+  %"extracted.iter.12" = extractvalue {i64*, i64, i64, i64*} %".650", 0
+  %"extracted.stop.17" = extractvalue {i64*, i64, i64, i64*} %".650", 1
+  %"extracted.step.17" = extractvalue {i64*, i64, i64, i64*} %".650", 2
+  %"extracted.count.12" = extractvalue {i64*, i64, i64, i64*} %".650", 3
+  %".652" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi236.4"
+  %"extracted.iter.13" = extractvalue {i64*, i64, i64, i64*} %".652", 0
+  %"extracted.stop.18" = extractvalue {i64*, i64, i64, i64*} %".652", 1
+  %"extracted.step.18" = extractvalue {i64*, i64, i64, i64*} %".652", 2
+  %"extracted.count.13" = extractvalue {i64*, i64, i64, i64*} %".652", 3
+  store {i64*, i64, i64, i64*} %".650", {i64*, i64, i64, i64*}* %"$phi236.4"
+  %"extracted.iter.14" = extractvalue {i64*, i64, i64, i64*} %".650", 0
+  %"extracted.stop.19" = extractvalue {i64*, i64, i64, i64*} %".650", 1
+  %"extracted.step.19" = extractvalue {i64*, i64, i64, i64*} %".650", 2
+  %"extracted.count.14" = extractvalue {i64*, i64, i64, i64*} %".650", 3
+  br label %"B236"
+B236.if:
+  %".670" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".659", i32 0, i32 0
+  %".671" = load i64*, i64** %".670"
+  %".672" = load i64, i64* %".671"
+  %".673" = getelementptr inbounds {i64, i1}, {i64, i1}* %".656", i32 0, i32 0
+  store i64 %".672", i64* %".673"
+  %".675" = sub nsw i64 %".665", 1
+  store i64 %".675", i64* %".664"
+  %".677" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".659", i32 0, i32 2
+  %".678" = load i64, i64* %".677"
+  %".679" = add i64 %".672", %".678"
+  %".680" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".659", i32 0, i32 0
+  %".681" = load i64*, i64** %".680"
+  store i64 %".679", i64* %".681"
+  br label %"B236.endif"
+B236.endif:
+  %".684" = load {i64, i1}, {i64, i1}* %".656"
+  %"extracted.first.8" = extractvalue {i64, i1} %".684", 0
+  %"extracted.second.8" = extractvalue {i64, i1} %".684", 1
+  store {i64, i1} zeroinitializer, {i64, i1}* %".685"
+  store {i64, i1} %".684", {i64, i1}* %".685"
+  %".689" = getelementptr inbounds {i64, i1}, {i64, i1}* %".685", i32 0, i32 0
+  %".690" = load i64, i64* %".689"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".691"
+  store {i64, i1} %".684", {i64, i1}* %".691"
+  %".695" = getelementptr inbounds {i64, i1}, {i64, i1}* %".691", i32 0, i32 1
+  %".696" = load i1, i1* %".695"
+  %"extracted.first.9" = extractvalue {i64, i1} %".684", 0
+  %"extracted.second.9" = extractvalue {i64, i1} %".684", 1
+  %".698" = load i64, i64* %"$phi240.5"
+  store i64 %".690", i64* %"$phi240.5"
+  br i1 %".696", label %"B240", label %"B374"
+B240.if:
+  store {i8*, i32, i8*, i8*, i32}* @".const.picklebuf.136547745386624", {i8*, i32, i8*, i8*, i32}** %"excinfo", !numba_exception_output !2
+  %".760" = load i64, i64* %"try_state"
+  %".761" = icmp ugt i64 %".760", 0
+  %".762" = load {i8*, i32, i8*, i8*, i32}*, {i8*, i32, i8*, i8*, i32}** %"excinfo"
+  ret i32 1
+B240.endif:
+  br i1 %".756", label %"B240.endif.if", label %"B240.endif.else"
+B240.endif.if:
+  %".765" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731", i32 0, i32 3
+  %".766" = load i64*, i64** %".765"
+  store i64 0, i64* %".766"
+  br label %"B240.endif.endif"
+B240.endif.else:
+  %".769" = srem i64 %".753", %".739"
+  %".770" = sub i64 0, %".769"
+  %".771" = select  i1 %".754", i64 %".769", i64 %".770"
+  %".772" = icmp sgt i64 %".771", 0
+  %".773" = sdiv i64 %".753", %".739"
+  %".774" = select  i1 %".772", i64 1, i64 0
+  %".775" = add i64 %".773", %".774"
+  %".776" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731", i32 0, i32 3
+  %".777" = load i64*, i64** %".776"
+  store i64 %".775", i64* %".777"
+  br label %"B240.endif.endif"
+B240.endif.endif:
+  %".780" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".731"
+  %"extracted.start.5" = extractvalue {i64, i64, i64} %".726", 0
+  %"extracted.stop.20" = extractvalue {i64, i64, i64} %".726", 1
+  %"extracted.step.20" = extractvalue {i64, i64, i64} %".726", 2
+  %"extracted.iter.15" = extractvalue {i64*, i64, i64, i64*} %".780", 0
+  %"extracted.stop.21" = extractvalue {i64*, i64, i64, i64*} %".780", 1
+  %"extracted.step.21" = extractvalue {i64*, i64, i64, i64*} %".780", 2
+  %"extracted.count.15" = extractvalue {i64*, i64, i64, i64*} %".780", 3
+  %".782" = load {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %"$phi296.5"
+  %"extracted.iter.16" = extractvalue {i64*, i64, i64, i64*} %".782", 0
+  %"extracted.stop.22" = extractvalue {i64*, i64, i64, i64*} %".782", 1
+  %"extracted.step.22" = extractvalue {i64*, i64, i64, i64*} %".782", 2
+  %"extracted.count.16" = extractvalue {i64*, i64, i64, i64*} %".782", 3
+  store {i64*, i64, i64, i64*} %".780", {i64*, i64, i64, i64*}* %"$phi296.5"
+  %"extracted.iter.17" = extractvalue {i64*, i64, i64, i64*} %".780", 0
+  %"extracted.stop.23" = extractvalue {i64*, i64, i64, i64*} %".780", 1
+  %"extracted.step.23" = extractvalue {i64*, i64, i64, i64*} %".780", 2
+  %"extracted.count.17" = extractvalue {i64*, i64, i64, i64*} %".780", 3
+  br label %"B296"
+B296.if:
+  %".800" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".789", i32 0, i32 0
+  %".801" = load i64*, i64** %".800"
+  %".802" = load i64, i64* %".801"
+  %".803" = getelementptr inbounds {i64, i1}, {i64, i1}* %".786", i32 0, i32 0
+  store i64 %".802", i64* %".803"
+  %".805" = sub nsw i64 %".795", 1
+  store i64 %".805", i64* %".794"
+  %".807" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".789", i32 0, i32 2
+  %".808" = load i64, i64* %".807"
+  %".809" = add i64 %".802", %".808"
+  %".810" = getelementptr inbounds {i64*, i64, i64, i64*}, {i64*, i64, i64, i64*}* %".789", i32 0, i32 0
+  %".811" = load i64*, i64** %".810"
+  store i64 %".809", i64* %".811"
+  br label %"B296.endif"
+B296.endif:
+  %".814" = load {i64, i1}, {i64, i1}* %".786"
+  %"extracted.first.10" = extractvalue {i64, i1} %".814", 0
+  %"extracted.second.10" = extractvalue {i64, i1} %".814", 1
+  store {i64, i1} zeroinitializer, {i64, i1}* %".815"
+  store {i64, i1} %".814", {i64, i1}* %".815"
+  %".819" = getelementptr inbounds {i64, i1}, {i64, i1}* %".815", i32 0, i32 0
+  %".820" = load i64, i64* %".819"
+  store {i64, i1} zeroinitializer, {i64, i1}* %".821"
+  store {i64, i1} %".814", {i64, i1}* %".821"
+  %".825" = getelementptr inbounds {i64, i1}, {i64, i1}* %".821", i32 0, i32 1
+  %".826" = load i1, i1* %".825"
+  %"extracted.first.11" = extractvalue {i64, i1} %".814", 0
+  %"extracted.second.11" = extractvalue {i64, i1} %".814", 1
+  %".828" = load i64, i64* %"$phi300.6"
+  store i64 %".820", i64* %"$phi300.6"
+  br i1 %".826", label %"B300", label %"B340"
+}
+
+declare void @"NRT_incref"(i8* noalias nocapture %".1")
+
+@".const.pickledata.136547745386624" = internal constant [76 x i8] c"\80\04\95A\00\00\00\00\00\00\00\8c\08builtins\94\8c\0aValueError\94\93\94\8c\1erange() arg 3 must not be zero\94\85\94N\87\94."
+@".const.pickledata.136547745386624.sha1" = internal constant [20 x i8] c"\ca\8e\fb:r\d6\14\fe\87 2\cc\e3\ac2`\07\a3\07'"
+@".const.picklebuf.136547745386624" = internal constant {i8*, i32, i8*, i8*, i32} {i8* bitcast ([76 x i8]* @".const.pickledata.136547745386624" to i8*), i32 76, i8* bitcast ([20 x i8]* @".const.pickledata.136547745386624.sha1" to i8*), i8* null, i32 0}
+declare void @"NRT_decref"(i8* noalias nocapture %".1")
+
+!0 = !{ i64 0, i64 9223372036854775807 }
+!1 = !{ !"branch_weights", i32 1, i32 99 }
+!2 = !{ i1 1 }
+================================================================================
