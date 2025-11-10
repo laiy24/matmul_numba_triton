@@ -1,0 +1,69 @@
+Matrix multiplication experiments implemented in Numba and Triton. The repository contains two completely separate pipelines:
+- `numba_matmul/` – CPU-focused kernels with Linux perf-based benchmarking.
+- `triton_matmul/` – GPU-focused kernels and autotuned Triton benchmarks.
+
+All required Python packages (CUDA-enabled PyTorch, Numba, CuPy, plotting libs, Triton) are listed in `requirements.txt`.
+
+## Environment Setup
+- Install a Python 3.12 interpreter (conda or `python -m venv` both work).
+- Create and activate an environment, e.g.:
+	- `python -m venv .venv && source .venv/bin/activate`
+	- or `conda create -n matmul python=3.12 && conda activate matmul`
+- Install dependencies: `pip install -r requirements.txt`
+- GPU workflow prerequisites:
+	- CUDA 12.x drivers and toolkit that match the PyTorch wheel from the extra index.
+	- A CUDA-capable GPU for Triton and CuPy benchmarks.
+- CPU workflow prerequisites:
+	- Linux `perf` utility (`sudo apt install linux-tools-common` or distro equivalent).
+
+## Numba
+Directory: `numba_matmul/`
+
+### 1. Run a Single Kernel
+- `python numba_matmul/numba_matmul.py --benchmark numba_naive_mul --N 512 --mode multi_run_timing`
+- Required flags:
+	- `--benchmark`: one of the implementations defined in `numba_matmul.py` (see source for exact names).
+	- `--N`: square matrix size.
+	- `--mode`: `single_run`, `multi_run_perf`, or `multi_run_timing`.
+	- Optional tiling/loop parameters: `--B1`, `--B2`, `--reps`.
+
+### 2. Run the Full Benchmark Sweep
+- Edit `numba_matmul/numba_benchmark.sh`:
+	- Set `PYTHON_CMD` to the interpreter inside your environment (`which python`).
+	- Adjust matrix sizes, block sizes, and perf event names if desired.
+- Ensure `perf` has permission (consider `sudo sysctl -w kernel.perf_event_paranoid=1`).
+- Execute: `sudo bash numba_matmul/numba_benchmark.sh`
+- Output: `numba_matmul/numba_benchmark_results.csv`
+
+### 3. Analyze and Plot Results
+- `python numba_matmul/analyze_numba_result.py`
+- Optional edit: set `CSV_FILENAME` inside the script if the CSV lives elsewhere.
+- Generates plots in `numba_matmul/numba_plots/` (directory created automatically) and prints the best-performing configuration.
+
+## Triton
+Directory: `triton_matmul/`
+
+### 1. Run a Single Kernel
+- `python triton_matmul/triton_matmul.py --benchmark triton_matmul_basic --N 1024 --reps 20 --block-size-m 128 --block-size-n 128 --block-size-k 64`
+- All runs assume CUDA tensors; the script aborts if CUDA or Triton is unavailable.
+- Available `--benchmark` values: `triton_matmul_basic`, `triton_matmul_autotuned`, `triton_2d_grid_autotuned`, `triton_grouped_autotuned`.
+- `--mode` is fixed to `multi_run_timing`;.
+- adjust `--reps` to repeat the same experiment multiple times.
+
+### 2. Run the Full Benchmark Sweep
+- Edit `triton_matmul/triton_benchmark.sh`:
+	- Set `PYTHON_CMD` to the Triton-ready interpreter.
+	- Optionally set `CUPY_PYTHON_CMD` if you want CuPy baselines.
+	- Customize matrix sizes, block-size triplets, and benchmark list.
+- The script exports `TRITON_PRINT_AUTOTUNING=1` so you can track Triton autotuner progress.
+- Execute: `bash triton_matmul/triton_benchmark.sh`
+- Output: `triton_matmul/triton_benchmark_results.csv`.
+
+### 3. Analyze and Plot Results
+- `python triton_matmul/analyze_triton_result.py --csv triton_matmul/triton_benchmark_results.csv --outdir triton_matmul/triton_plot`
+- Produces per-matrix-size runtime bar charts in the specified output directory and prints a summary count of generated figures.
+
+## Tips
+- Both shell scripts call Python directly—ensure executable bits are set (`chmod +x`) if you plan to run them as standalone commands.
+- Large matrix sizes and high repetition counts are computationally expensive; tune `N`, `REPS`, and block sizes to match your hardware limits.
+- When benchmarking on shared systems, pin CPU affinity or limit GPU concurrency to reduce noise.
