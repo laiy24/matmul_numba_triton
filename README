@@ -78,6 +78,13 @@ Directory: `triton_matmul/`
 - `python triton_matmul/analyze_triton_result.py --csv triton_matmul/triton_benchmark_results.csv --outdir triton_matmul/triton_plot`
 - Produces per-matrix-size runtime bar charts in the specified output directory and prints a summary count of generated figures.
 
+### 4. Dump Compiler IR for the Basic Kernel
+- Activate your Triton-ready environment and change into `triton_matmul/triton_dump` so the generated files stay alongside the helper script: `cd triton_matmul/triton_dump`.
+- Emit TTIR and LLIR for the basic kernel (defaults mirror the CLI): `python dump_triton_basic_ir.py > triton_basic_ir.txt`
+- The script writes `triton_basic_ttir.ll` and `triton_basic_llir.ll` in the same directory and also prints both sections to stdout for easy redirection.
+- Adjust block sizes or pipeline parameters on the command line, e.g. `python dump_triton_basic_ir.py --block-size-m 64 --block-size-n 64 --block-size-k 32`.
+- Pass `--no-stdout` if you only want the on-disk files; re-run the script to overwrite the existing dumps when experimenting with the kernel.
+
 ## Tips
 - Both shell scripts call Python directly—ensure executable bits are set (`chmod +x`) if you plan to run them as standalone commands.
 - Large matrix sizes and high repetition counts are computationally expensive; tune `N`, `REPS`, and block sizes to match your hardware limits.
