@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render a control-flow graph dump to an image."""
+"""Render control-flow graph dumps to images."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import ast
 import math
 import re
 from pathlib import Path
-from typing import Dict, Iterable, Tuple
+from typing import Dict, Iterable, Tuple, List
 
 import matplotlib.pyplot as plt
 from matplotlib.patches import Circle, FancyArrowPatch, Patch
@@ -21,23 +21,45 @@ Position = Dict[NodeId, Tuple[float, float]]
 LoopMarkers = Tuple[set[NodeId], set[NodeId], set[NodeId]]
 
 
-def parse_sections(path: Path) -> Dict[str, str]:
-    sections: Dict[str, str] = {}
+def parse_sections(path: Path) -> List[Dict[str, str]]:
+    """
+    Parses a CFG dump file that may contain multiple graphs.
+    Returns a list, where each item is a dictionary of sections for one graph.
+    """
+    all_graphs: List[Dict[str, str]] = []
+    current_sections: Dict[str, str] = {}
     current_label: str | None = None
     buffer: list[str] = []
 
     for raw_line in path.read_text().splitlines():
         line = raw_line.rstrip()
         if line.endswith(":") and line.upper().startswith("CFG "):
+            new_label = line[:-1]
+
+            # If we have a label, save the buffer for it
             if current_label is not None:
-                sections[current_label] = "\n".join(buffer).strip()
+                current_sections[current_label] = "\n".join(buffer).strip()
                 buffer.clear()
-            current_label = line[:-1]
+
+            # "CFG adjacency lists" marks the start of a new graph.
+            # If we see it, and we already have sections, save the completed graph.
+            if new_label.upper() == "CFG ADJACENCY LISTS" and current_sections:
+                all_graphs.append(current_sections)
+                current_sections = {}  # Start a new graph
+
+            current_label = new_label
         else:
             buffer.append(raw_line)
+
+    # After the loop, save the last buffer
     if current_label is not None:
-        sections[current_label] = "\n".join(buffer).strip()
-    return sections
+        current_sections[current_label] = "\n".join(buffer).strip()
+    
+    # Save the final graph
+    if current_sections:
+        all_graphs.append(current_sections)
+        
+    return all_graphs
 
 
 def parse_adjacency(text: str) -> Adjacency:
@@ -104,7 +126,7 @@ def compute_positions(adjacency: Adjacency, dominators: Dict[NodeId, set[NodeId]
                     visited.add(nxt)
                     queue.append((nxt, depth + 1))
         # Any disconnected nodes get the deepest level.
-        deepest = max(level_map)
+        deepest = max(level_map) if level_map else 0
         for node in nodes - visited:
             level_map.setdefault(deepest + 1, []).append(node)
 
@@ -142,7 +164,8 @@ def draw_cfg(
     loop_headers: set[NodeId],
 ) -> None:
     if not positions:
-        raise ValueError("No nodes to draw; the CFG appears to be empty.")
+        print(f"Skipping {output} as no nodes were found to draw.")
+        return
 
     node_radius = 0.6
     fig, ax = plt.subplots(figsize=(12, 8))
@@ -231,26 +254,56 @@ def main() -> None:
     parser.add_argument("--output", type=Path, default=Path("cfg.png"), help="Image file to create (default: cfg.png)")
     args = parser.parse_args()
 
-    sections = parse_sections(args.cfg_dump)
-    adjacency_text = sections.get("CFG adjacency lists")
-    if not adjacency_text:
-        raise ValueError("The dump file does not contain 'CFG adjacency lists'.")
+    all_graph_sections = parse_sections(args.cfg_dump)
+    
+    if not all_graph_sections:
+        raise ValueError("No CFG sections found in the dump file.")
+        
+    print(f"Found {len(all_graph_sections)} graph(s) in {args.cfg_dump}.")
 
-    adjacency = parse_adjacency(adjacency_text)
-    dominators = None
-    dom_text = sections.get("CFG dominators")
-    if dom_text:
-        dominators = parse_dominators(dom_text)
+    base_output_path = args.output
+    num_graphs = len(all_graph_sections)
 
-    loop_entries: set[NodeId] = set()
-    loop_exits: set[NodeId] = set()
-    loop_headers: set[NodeId] = set()
-    loops_text = sections.get("CFG loops")
-    if loops_text:
-        loop_entries, loop_exits, loop_headers = parse_loops(loops_text)
+    for i, sections in enumerate(all_graph_sections):
+        print(f"\n--- Processing Graph {i + 1} / {num_graphs} ---")
+        
+        # Determine output path
+        output_path = base_output_path
+        if num_graphs > 1:
+            stem = base_output_path.stem
+            suffix = base_output_path.suffix
+            output_path = base_output_path.with_name(f"{stem}_{i}{suffix}")
 
-    positions = compute_positions(adjacency, dominators)
-    draw_cfg(adjacency, positions, args.output, loop_entries, loop_exits, loop_headers)
+        adjacency_text = sections.get("CFG adjacency lists")
+        if not adjacency_text:
+            print(f"Skipping graph {i + 1} as it has no 'CFG adjacency lists'.")
+            continue
+
+        adjacency = parse_adjacency(adjacency_text)
+        dominators = None
+        dom_text = sections.get("CFG dominators")
+        if dom_text:
+            try:
+                dominators = parse_dominators(dom_text)
+            except Exception as e:
+                print(f"Warning: Could not parse dominators for graph {i+1}. {e}")
+
+        loop_entries: set[NodeId] = set()
+        loop_exits: set[NodeId] = set()
+        loop_headers: set[NodeId] = set()
+        loops_text = sections.get("CFG loops")
+        if loops_text:
+            try:
+                loop_entries, loop_exits, loop_headers = parse_loops(loops_text)
+            except Exception as e:
+                print(f"Warning: Could not parse loops for graph {i+1}. {e}")
+
+        try:
+            positions = compute_positions(adjacency, dominators)
+            draw_cfg(adjacency, positions, output_path, loop_entries, loop_exits, loop_headers)
+            print(f"Successfully saved {output_path}")
+        except Exception as e:
+            print(f"Failed to draw graph {i+1}: {e}")
 
 
 if __name__ == "__main__":
