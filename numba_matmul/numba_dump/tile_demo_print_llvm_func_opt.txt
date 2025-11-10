@@ -5,9 +5,9 @@ source_filename = "<string>"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-@.const.pickledata.123536825560896 = internal constant [102 x i8] c"\80\04\95[\00\00\00\00\00\00\00\8C\08builtins\94\8C\0CRuntimeError\94\93\94\8C6numba jitted function aborted due to unresolved symbol\94\85\94N\87\94."
-@.const.pickledata.123536825560896.sha1 = internal constant [20 x i8] c"\97\BE\DC\DF\EC\8E\80\B7\09>P\CE%\EDV\F7r\0E\0C\9C"
-@.const.picklebuf.123536825560896 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.123536825560896, i32 102, ptr @.const.pickledata.123536825560896.sha1, ptr null, i32 0 }
+@.const.pickledata.139210368364736 = internal constant [102 x i8] c"\80\04\95[\00\00\00\00\00\00\00\8C\08builtins\94\8C\0CRuntimeError\94\93\94\8C6numba jitted function aborted due to unresolved symbol\94\85\94N\87\94."
+@.const.pickledata.139210368364736.sha1 = internal constant [20 x i8] c"\97\BE\DC\DF\EC\8E\80\B7\09>P\CE%\EDV\F7r\0E\0C\9C"
+@.const.picklebuf.139210368364736 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.139210368364736, i32 102, ptr @.const.pickledata.139210368364736.sha1, ptr null, i32 0 }
 
 define i64 @nrt_atomic_add(ptr %.1) {
 .3:
@@ -79,7 +79,7 @@ declare void @NRT_MemInfo_call_dtor(ptr)
 
 define i32 @nrt_unresolved_abort(ptr %.1, ptr %.2) {
 .4:
-  store ptr @.const.picklebuf.123536825560896, ptr %.2, align 8, !numba_exception_output !1
+  store ptr @.const.picklebuf.139210368364736, ptr %.2, align 8, !numba_exception_output !1
   ret i32 1
 }
 
@@ -96,18 +96,18 @@ source_filename = "<string>"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-@.const.pickledata.123536794211328 = internal constant [76 x i8] c"\80\04\95A\00\00\00\00\00\00\00\8C\08builtins\94\8C\0AValueError\94\93\94\8C\1Erange() arg 3 must not be zero\94\85\94N\87\94."
-@.const.pickledata.123536794211328.sha1 = internal constant [20 x i8] c"\CA\8E\FB:r\D6\14\FE\87 2\CC\E3\AC2`\07\A3\07'"
-@.const.picklebuf.123536794211328 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.123536794211328, i32 76, ptr @.const.pickledata.123536794211328.sha1, ptr null, i32 0 }
+@.const.pickledata.139210341733760 = internal constant [76 x i8] c"\80\04\95A\00\00\00\00\00\00\00\8C\08builtins\94\8C\0AValueError\94\93\94\8C\1Erange() arg 3 must not be zero\94\85\94N\87\94."
+@.const.pickledata.139210341733760.sha1 = internal constant [20 x i8] c"\CA\8E\FB:r\D6\14\FE\87 2\CC\E3\AC2`\07\A3\07'"
+@.const.picklebuf.139210341733760 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.139210341733760, i32 76, ptr @.const.pickledata.139210341733760.sha1, ptr null, i32 0 }
 @.const.numba_tiled_mul = internal constant [16 x i8] c"numba_tiled_mul\00"
-@_ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx = common global ptr null
-@".const.missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx" = internal constant [201 x i8] c"missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx\00"
+@_ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx = common global ptr null
+@".const.missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx" = internal constant [201 x i8] c"missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx\00"
 @PyExc_TypeError = external global i8
 @".const.can't unbox array from PyObject into native value.  The object maybe of a different type" = internal constant [89 x i8] c"can't unbox array from PyObject into native value.  The object maybe of a different type\00"
 @_Py_NoneStruct = external global i8
 @".const.`env.consts` is NULL in `read_const`" = internal constant [37 x i8] c"`env.consts` is NULL in `read_const`\00"
-@.const.pickledata.123536980735840 = internal constant [32 x i8] c"\80\04\95\15\00\00\00\00\00\00\00\8C\05numpy\94\8C\07ndarray\94\93\94."
-@.const.pickledata.123536980735840.sha1 = internal constant [20 x i8] c"\DF\BC\FD\D3\9F\CB&\F4\D0\C6\80\95D\87\B8\C0\B5;\B8\A3"
+@.const.pickledata.139210522261344 = internal constant [32 x i8] c"\80\04\95\15\00\00\00\00\00\00\00\8C\05numpy\94\8C\07ndarray\94\93\94."
+@.const.pickledata.139210522261344.sha1 = internal constant [20 x i8] c"\DF\BC\FD\D3\9F\CB&\F4\D0\C6\80\95D\87\B8\C0\B5;\B8\A3"
 @".const.Error creating Python tuple from runtime exception arguments" = internal constant [61 x i8] c"Error creating Python tuple from runtime exception arguments\00"
 @".const.unknown error when calling native function" = internal constant [43 x i8] c"unknown error when calling native function\00"
 @PyExc_RuntimeError = external global i8
@@ -115,9 +115,9 @@ target triple = "x86_64-unknown-linux-gnu"
 @PyExc_StopIteration = external global i8
 @PyExc_SystemError = external global i8
 @".const.unknown error when calling native function.2" = internal constant [43 x i8] c"unknown error when calling native function\00"
-@".const.<numba.core.cpu.CPUContext object at 0x705b26bccb00>" = internal constant [53 x i8] c"<numba.core.cpu.CPUContext object at 0x705b26bccb00>\00"
+@".const.<numba.core.cpu.CPUContext object at 0x7e9c6ef846b0>" = internal constant [53 x i8] c"<numba.core.cpu.CPUContext object at 0x7e9c6ef846b0>\00"
 
-define range(i32 0, 2) i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx(ptr noalias nocapture %retptr, ptr noalias nocapture %excinfo, ptr %arg.A.0, ptr %arg.A.1, i64 %arg.A.2, i64 %arg.A.3, ptr %arg.A.4, i64 %arg.A.5.0, i64 %arg.A.5.1, i64 %arg.A.6.0, i64 %arg.A.6.1, ptr %arg.B.0, ptr %arg.B.1, i64 %arg.B.2, i64 %arg.B.3, ptr %arg.B.4, i64 %arg.B.5.0, i64 %arg.B.5.1, i64 %arg.B.6.0, i64 %arg.B.6.1, ptr %arg.C.0, ptr %arg.C.1, i64 %arg.C.2, i64 %arg.C.3, ptr %arg.C.4, i64 %arg.C.5.0, i64 %arg.C.5.1, i64 %arg.C.6.0, i64 %arg.C.6.1, i64 %arg.B1) {
+define range(i32 0, 2) i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx(ptr noalias nocapture %retptr, ptr noalias nocapture %excinfo, ptr %arg.A.0, ptr %arg.A.1, i64 %arg.A.2, i64 %arg.A.3, ptr %arg.A.4, i64 %arg.A.5.0, i64 %arg.A.5.1, i64 %arg.A.6.0, i64 %arg.A.6.1, ptr %arg.B.0, ptr %arg.B.1, i64 %arg.B.2, i64 %arg.B.3, ptr %arg.B.4, i64 %arg.B.5.0, i64 %arg.B.5.1, i64 %arg.B.6.0, i64 %arg.B.6.1, ptr %arg.C.0, ptr %arg.C.1, i64 %arg.C.2, i64 %arg.C.3, ptr %arg.C.4, i64 %arg.C.5.0, i64 %arg.C.5.1, i64 %arg.C.6.0, i64 %arg.C.6.1, i64 %arg.B1) {
 B0:
   tail call void @NRT_incref(ptr %arg.A.0)
   tail call void @NRT_incref(ptr %arg.B.0)
@@ -127,7 +127,7 @@ B0:
   br i1 %.127, label %B0.if, label %B0.endif, !prof !0
 
 B60.loopexit:                                     ; preds = %B96.endif.lr.ph, %B92.loopexit.us, %B64.endif, %B64.endif.endif
-  %.168 = icmp sgt i64 %.167672700, 1
+  %.168 = icmp sgt i64 %.167674702, 1
   br i1 %.168, label %B64.endif, label %B390
 
 common.ret:                                       ; preds = %B0.if, %B390
@@ -157,7 +157,7 @@ B390:                                             ; preds = %B60.loopexit, %B0.e
   br label %common.ret
 
 B0.if:                                            ; preds = %B0
-  store ptr @.const.picklebuf.123536794211328, ptr %excinfo, align 8, !numba_exception_output !1
+  store ptr @.const.picklebuf.139210341733760, ptr %excinfo, align 8, !numba_exception_output !1
   br label %common.ret
 
 B0.endif:                                         ; preds = %B0
@@ -173,14 +173,14 @@ B0.endif.endif:                                   ; preds = %B0.endif
   %.145 = sdiv i64 %arg.A.5.0, %arg.B1
   %.146 = zext i1 %.144 to i64
   %.147 = add i64 %.145, %.146
-  %.168690 = icmp sgt i64 %.147, 0
-  br i1 %.168690, label %B64.endif, label %B390
+  %.168692 = icmp sgt i64 %.147, 0
+  br i1 %.168692, label %B64.endif, label %B390
 
 B64.endif:                                        ; preds = %B0.endif.endif, %B60.loopexit
-  %.167672700 = phi i64 [ %.177, %B60.loopexit ], [ %.147, %B0.endif.endif ]
-  %.174673699 = phi i64 [ %.181, %B60.loopexit ], [ 0, %B0.endif.endif ]
-  %.177 = add nsw i64 %.167672700, -1
-  %.181 = add i64 %.174673699, %arg.B1
+  %.167674702 = phi i64 [ %.177, %B60.loopexit ], [ %.147, %B0.endif.endif ]
+  %.174675701 = phi i64 [ %.181, %B60.loopexit ], [ 0, %B0.endif.endif ]
+  %.177 = add nsw i64 %.167674702, -1
+  %.181 = add i64 %.174675701, %arg.B1
   br i1 false, label %B60.loopexit, label %B64.endif.endif
 
 B64.endif.endif:                                  ; preds = %B64.endif
@@ -191,22 +191,22 @@ B64.endif.endif:                                  ; preds = %B64.endif
   %.267 = sdiv i64 %arg.A.5.0, %arg.B1
   %.268 = zext i1 %.266 to i64
   %.269 = add i64 %.267, %.268
-  %.290553 = icmp sgt i64 %.269, 0
-  br i1 %.290553, label %B96.endif.lr.ph, label %B60.loopexit
+  %.290555 = icmp sgt i64 %.269, 0
+  br i1 %.290555, label %B96.endif.lr.ph, label %B60.loopexit
 
 B96.endif.lr.ph:                                  ; preds = %B64.endif.endif
   %.458 = tail call i64 @llvm.smin.i64(i64 %arg.A.5.0, i64 %.181)
-  %.496 = sub i64 %.458, %.174673699
+  %.496 = sub i64 %.458, %.174675701
   %.496.fr = freeze i64 %.496
   %..496 = call i64 @llvm.smax.i64(i64 %.496.fr, i64 0)
   %.539435 = icmp sgt i64 %.496.fr, 0
   br i1 %.539435, label %B96.endif.us, label %B60.loopexit
 
 B96.endif.us:                                     ; preds = %B96.endif.lr.ph, %B92.loopexit.us
-  %.289539561.us = phi i64 [ %.299.us, %B92.loopexit.us ], [ %.269, %B96.endif.lr.ph ]
-  %.296540560.us = phi i64 [ %.303.us, %B92.loopexit.us ], [ 0, %B96.endif.lr.ph ]
-  %.299.us = add nsw i64 %.289539561.us, -1
-  %.303.us = add i64 %.296540560.us, %arg.B1
+  %.289541563.us = phi i64 [ %.299.us, %B92.loopexit.us ], [ %.269, %B96.endif.lr.ph ]
+  %.296542562.us = phi i64 [ %.303.us, %B92.loopexit.us ], [ 0, %B96.endif.lr.ph ]
+  %.299.us = add nsw i64 %.289541563.us, -1
+  %.303.us = add i64 %.296542562.us, %arg.B1
   br i1 false, label %B92.loopexit.us, label %B96.endif.endif.us
 
 B96.endif.endif.us:                               ; preds = %B96.endif.us
@@ -217,120 +217,123 @@ B96.endif.endif.us:                               ; preds = %B96.endif.us
   %.389.us = sdiv i64 %arg.A.5.0, %arg.B1
   %.390.us = zext i1 %.388.us to i64
   %.391.us = add i64 %.389.us, %.390.us
-  %.412484.us = icmp sgt i64 %.391.us, 0
-  br i1 %.412484.us, label %B128.endif.lr.ph.us, label %B92.loopexit.us
+  %.412486.us = icmp sgt i64 %.391.us, 0
+  br i1 %.412486.us, label %B128.endif.lr.ph.us, label %B92.loopexit.us
 
 B92.loopexit.us:                                  ; preds = %B180.B124.loopexit_crit_edge.split.us.us.us.us, %B96.endif.us, %B128.endif.lr.ph.us, %B96.endif.endif.us
-  %.290.us = icmp sgt i64 %.289539561.us, 1
+  %.290.us = icmp sgt i64 %.289541563.us, 1
   br i1 %.290.us, label %B96.endif.us, label %B60.loopexit
 
 B128.endif.lr.ph.us:                              ; preds = %B96.endif.endif.us
   %.585.us = tail call i64 @llvm.smin.i64(i64 %arg.A.5.0, i64 %.303.us)
-  %.623.us = sub i64 %.585.us, %.296540560.us
+  %.623.us = sub i64 %.585.us, %.296542562.us
   %..623.us = call i64 @llvm.smax.i64(i64 %.623.us, i64 0)
   %.666417.us.not = icmp slt i64 %.623.us, 1
   br i1 %.666417.us.not, label %B92.loopexit.us, label %B128.endif.us.us.us
 
 B128.endif.us.us.us:                              ; preds = %B128.endif.lr.ph.us, %B180.B124.loopexit_crit_edge.split.us.us.us.us
-  %.411472490.us.us.us = phi i64 [ %.421.us.us.us, %B180.B124.loopexit_crit_edge.split.us.us.us.us ], [ %.391.us, %B128.endif.lr.ph.us ]
-  %.418473489.us.us.us = phi i64 [ %.425.us.us.us, %B180.B124.loopexit_crit_edge.split.us.us.us.us ], [ 0, %B128.endif.lr.ph.us ]
-  %.421.us.us.us = add nsw i64 %.411472490.us.us.us, -1
-  %.425.us.us.us = add i64 %.418473489.us.us.us, %arg.B1
+  %.411474492.us.us.us = phi i64 [ %.421.us.us.us, %B180.B124.loopexit_crit_edge.split.us.us.us.us ], [ %.391.us, %B128.endif.lr.ph.us ]
+  %.418475491.us.us.us = phi i64 [ %.425.us.us.us, %B180.B124.loopexit_crit_edge.split.us.us.us.us ], [ 0, %B128.endif.lr.ph.us ]
+  %.421.us.us.us = add nsw i64 %.411474492.us.us.us, -1
+  %.425.us.us.us = add i64 %.418475491.us.us.us, %arg.B1
   %.715.us.us.us = tail call i64 @llvm.smin.i64(i64 %arg.A.5.0, i64 %.425.us.us.us)
-  %.753.us.us.us = sub i64 %.715.us.us.us, %.418473489.us.us.us
+  %.753.us.us.us = sub i64 %.715.us.us.us, %.418475491.us.us.us
   %..753.us.us.us = call i64 @llvm.smax.i64(i64 %.753.us.us.us, i64 0)
   %.796403.us.us.us.not = icmp slt i64 %.753.us.us.us, 1
-  br i1 %.796403.us.us.us.not, label %B184.endif.us.us508.us.us, label %B184.endif.us.us.us.us.us
+  br i1 %.796403.us.us.us.not, label %B184.endif.us.us510.us.us, label %B184.endif.us.us.us.us.us
 
-B184.endif.us.us508.us.us:                        ; preds = %B128.endif.us.us.us, %B236.B180.loopexit_crit_edge.split.us456.us.us.us
-  %.538427439.us.us509.us.us = phi i64 [ %.548.us.us511.us.us, %B236.B180.loopexit_crit_edge.split.us456.us.us.us ], [ %..496, %B128.endif.us.us.us ]
-  %.545428438.us.us510.us.us = phi i64 [ %.552.us.us512.us.us, %B236.B180.loopexit_crit_edge.split.us456.us.us.us ], [ %.174673699, %B128.endif.us.us.us ]
-  %.548.us.us511.us.us = add nsw i64 %.538427439.us.us509.us.us, -1
-  %.982.us.us513.us.us = icmp slt i64 %.545428438.us.us510.us.us, 0
-  %.983.us.us514.us.us = select i1 %.982.us.us513.us.us, i64 %arg.C.5.0, i64 0
-  %.984.us.us515.us.us = add i64 %.983.us.us514.us.us, %.545428438.us.us510.us.us
-  %.1004.us.us516.us.us = mul i64 %.984.us.us515.us.us, %arg.C.5.1
-  %0 = getelementptr double, ptr %arg.C.4, i64 %.1004.us.us516.us.us
+B184.endif.us.us510.us.us:                        ; preds = %B128.endif.us.us.us, %B236.B180.loopexit_crit_edge.split.us458.us.us.us
+  %.538427439.us.us511.us.us = phi i64 [ %.548.us.us513.us.us, %B236.B180.loopexit_crit_edge.split.us458.us.us.us ], [ %..496, %B128.endif.us.us.us ]
+  %.545428438.us.us512.us.us = phi i64 [ %.552.us.us514.us.us, %B236.B180.loopexit_crit_edge.split.us458.us.us.us ], [ %.174675701, %B128.endif.us.us.us ]
+  %.548.us.us513.us.us = add nsw i64 %.538427439.us.us511.us.us, -1
+  %.983.us.us515.us.us = icmp slt i64 %.545428438.us.us512.us.us, 0
+  %.984.us.us516.us.us = select i1 %.983.us.us515.us.us, i64 %arg.C.5.0, i64 0
+  %.985.us.us517.us.us = add i64 %.984.us.us516.us.us, %.545428438.us.us512.us.us
+  %.1005.us.us518.us.us = mul i64 %.985.us.us517.us.us, %arg.C.5.1
+  %0 = getelementptr float, ptr %arg.C.4, i64 %.1005.us.us518.us.us
   br label %B240.endif.us445.us.us.us
 
-B240.endif.us445.us.us.us:                        ; preds = %B240.endif.us445.us.us.us, %B184.endif.us.us508.us.us
-  %.665411419.us446.us.us.us = phi i64 [ %..623.us, %B184.endif.us.us508.us.us ], [ %.675.us448.us.us.us, %B240.endif.us445.us.us.us ]
-  %.672412418.us447.us.us.us = phi i64 [ %.296540560.us, %B184.endif.us.us508.us.us ], [ %.679.us449.us.us.us, %B240.endif.us445.us.us.us ]
+B240.endif.us445.us.us.us:                        ; preds = %B240.endif.us445.us.us.us, %B184.endif.us.us510.us.us
+  %.665411419.us446.us.us.us = phi i64 [ %..623.us, %B184.endif.us.us510.us.us ], [ %.675.us448.us.us.us, %B240.endif.us445.us.us.us ]
+  %.672412418.us447.us.us.us = phi i64 [ %.296542562.us, %B184.endif.us.us510.us.us ], [ %.679.us449.us.us.us, %B240.endif.us445.us.us.us ]
   %.675.us448.us.us.us = add nsw i64 %.665411419.us446.us.us.us, -1
   %.679.us449.us.us.us = add i64 %.672412418.us447.us.us.us, 1
-  %.985.us450.us.us.us = icmp slt i64 %.672412418.us447.us.us.us, 0
-  %.986.us451.us.us.us = select i1 %.985.us450.us.us.us, i64 %arg.C.5.1, i64 0
-  %1 = getelementptr double, ptr %0, i64 %.672412418.us447.us.us.us
-  %.1008.us452.us.us.us = getelementptr double, ptr %1, i64 %.986.us451.us.us.us
-  %.1009.us453.us.us.us = load double, ptr %.1008.us452.us.us.us, align 8
-  %.1011.us454.us.us.us = fadd double %.1009.us453.us.us.us, 0.000000e+00
-  store double %.1011.us454.us.us.us, ptr %.1008.us452.us.us.us, align 8
-  %.666.us455.us.us.us = icmp sgt i64 %.665411419.us446.us.us.us, 1
-  br i1 %.666.us455.us.us.us, label %B240.endif.us445.us.us.us, label %B236.B180.loopexit_crit_edge.split.us456.us.us.us
+  %.986.us450.us.us.us = icmp slt i64 %.672412418.us447.us.us.us, 0
+  %.987.us451.us.us.us = select i1 %.986.us450.us.us.us, i64 %arg.C.5.1, i64 0
+  %1 = getelementptr float, ptr %0, i64 %.672412418.us447.us.us.us
+  %.1009.us452.us.us.us = getelementptr float, ptr %1, i64 %.987.us451.us.us.us
+  %.1010.us453.us.us.us714 = load float, ptr %.1009.us452.us.us.us, align 4
+  %.1063.us456.us.us.us = fadd float %.1010.us453.us.us.us714, 0.000000e+00
+  store float %.1063.us456.us.us.us, ptr %.1009.us452.us.us.us, align 4
+  %.666.us457.us.us.us = icmp sgt i64 %.665411419.us446.us.us.us, 1
+  br i1 %.666.us457.us.us.us, label %B240.endif.us445.us.us.us, label %B236.B180.loopexit_crit_edge.split.us458.us.us.us
 
-B236.B180.loopexit_crit_edge.split.us456.us.us.us: ; preds = %B240.endif.us445.us.us.us
-  %.552.us.us512.us.us = add i64 %.545428438.us.us510.us.us, 1
-  %.539.us.us517.us.us = icmp sgt i64 %.538427439.us.us509.us.us, 1
-  br i1 %.539.us.us517.us.us, label %B184.endif.us.us508.us.us, label %B180.B124.loopexit_crit_edge.split.us.us.us.us
+B236.B180.loopexit_crit_edge.split.us458.us.us.us: ; preds = %B240.endif.us445.us.us.us
+  %.552.us.us514.us.us = add i64 %.545428438.us.us512.us.us, 1
+  %.539.us.us519.us.us = icmp sgt i64 %.538427439.us.us511.us.us, 1
+  br i1 %.539.us.us519.us.us, label %B184.endif.us.us510.us.us, label %B180.B124.loopexit_crit_edge.split.us.us.us.us
 
-B180.B124.loopexit_crit_edge.split.us.us.us.us:   ; preds = %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us, %B236.B180.loopexit_crit_edge.split.us456.us.us.us
-  %.412.us.us.us = icmp sgt i64 %.411472490.us.us.us, 1
+B180.B124.loopexit_crit_edge.split.us.us.us.us:   ; preds = %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us, %B236.B180.loopexit_crit_edge.split.us458.us.us.us
+  %.412.us.us.us = icmp sgt i64 %.411474492.us.us.us, 1
   br i1 %.412.us.us.us, label %B128.endif.us.us.us, label %B92.loopexit.us
 
 B184.endif.us.us.us.us.us:                        ; preds = %B128.endif.us.us.us, %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us
   %.538427439.us.us.us.us.us = phi i64 [ %.548.us.us.us.us.us, %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us ], [ %..496, %B128.endif.us.us.us ]
-  %.545428438.us.us.us.us.us = phi i64 [ %.552.us.us.us.us.us, %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us ], [ %.174673699, %B128.endif.us.us.us ]
+  %.545428438.us.us.us.us.us = phi i64 [ %.552.us.us.us.us.us, %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us ], [ %.174675701, %B128.endif.us.us.us ]
   %.548.us.us.us.us.us = add nsw i64 %.538427439.us.us.us.us.us, -1
   %.859.us.us.us.us.us = icmp slt i64 %.545428438.us.us.us.us.us, 0
   %.860.us.us.us.us.us = select i1 %.859.us.us.us.us.us, i64 %arg.A.5.0, i64 0
   %.861.us.us.us.us.us = add i64 %.860.us.us.us.us.us, %.545428438.us.us.us.us.us
   %.881.us.us.us.us.us = mul i64 %.861.us.us.us.us.us, %arg.A.5.1
-  %2 = getelementptr double, ptr %arg.A.4, i64 %.881.us.us.us.us.us
-  %.983.us.us.us.us.us = select i1 %.859.us.us.us.us.us, i64 %arg.C.5.0, i64 0
-  %.984.us.us.us.us.us = add i64 %.983.us.us.us.us.us, %.545428438.us.us.us.us.us
-  %.1004.us.us.us.us.us = mul i64 %.984.us.us.us.us.us, %arg.C.5.1
-  %3 = getelementptr double, ptr %arg.C.4, i64 %.1004.us.us.us.us.us
+  %2 = getelementptr float, ptr %arg.A.4, i64 %.881.us.us.us.us.us
+  %.984.us.us.us.us.us = select i1 %.859.us.us.us.us.us, i64 %arg.C.5.0, i64 0
+  %.985.us.us.us.us.us = add i64 %.984.us.us.us.us.us, %.545428438.us.us.us.us.us
+  %.1005.us.us.us.us.us = mul i64 %.985.us.us.us.us.us, %arg.C.5.1
+  %3 = getelementptr float, ptr %arg.C.4, i64 %.1005.us.us.us.us.us
   br label %B240.endif.us.us.us.us.us.us
 
 B240.endif.us.us.us.us.us.us:                     ; preds = %B296.B340_crit_edge.us.us.us.us.us.us, %B184.endif.us.us.us.us.us
   %.665411419.us.us.us.us.us.us = phi i64 [ %..623.us, %B184.endif.us.us.us.us.us ], [ %.675.us.us.us.us.us.us, %B296.B340_crit_edge.us.us.us.us.us.us ]
-  %.672412418.us.us.us.us.us.us = phi i64 [ %.296540560.us, %B184.endif.us.us.us.us.us ], [ %.679.us.us.us.us.us.us, %B296.B340_crit_edge.us.us.us.us.us.us ]
+  %.672412418.us.us.us.us.us.us = phi i64 [ %.296542562.us, %B184.endif.us.us.us.us.us ], [ %.679.us.us.us.us.us.us, %B296.B340_crit_edge.us.us.us.us.us.us ]
   %.675.us.us.us.us.us.us = add nsw i64 %.665411419.us.us.us.us.us.us, -1
-  %invariant.gep.us.us.us.us.us.us = getelementptr double, ptr %arg.B.4, i64 %.672412418.us.us.us.us.us.us
+  %invariant.gep.us.us.us.us.us.us = getelementptr float, ptr %arg.B.4, i64 %.672412418.us.us.us.us.us.us
   %.917.us.us.us.us.us.us = icmp slt i64 %.672412418.us.us.us.us.us.us, 0
   %.918.us.us.us.us.us.us = select i1 %.917.us.us.us.us.us.us, i64 %arg.B.5.1, i64 0
-  %invariant.gep409.us.us.us.us.us.us = getelementptr double, ptr %invariant.gep.us.us.us.us.us.us, i64 %.918.us.us.us.us.us.us
+  %invariant.gep409.us.us.us.us.us.us = getelementptr float, ptr %invariant.gep.us.us.us.us.us.us, i64 %.918.us.us.us.us.us.us
   br label %B300.us.us.us.us.us.us
 
 B300.us.us.us.us.us.us:                           ; preds = %B300.us.us.us.us.us.us, %B240.endif.us.us.us.us.us.us
-  %tmp.2.5406.us.us.us.us.us.us = phi double [ 0.000000e+00, %B240.endif.us.us.us.us.us.us ], [ %.946.us.us.us.us.us.us, %B300.us.us.us.us.us.us ]
+  %tmp.2.5406.us.us.us.us.us.us = phi double [ 0.000000e+00, %B240.endif.us.us.us.us.us.us ], [ %.947.us.us.us.us.us.us, %B300.us.us.us.us.us.us ]
   %.795401405.us.us.us.us.us.us = phi i64 [ %..753.us.us.us, %B240.endif.us.us.us.us.us.us ], [ %.805.us.us.us.us.us.us, %B300.us.us.us.us.us.us ]
-  %.802402404.us.us.us.us.us.us = phi i64 [ %.418473489.us.us.us, %B240.endif.us.us.us.us.us.us ], [ %.809.us.us.us.us.us.us, %B300.us.us.us.us.us.us ]
+  %.802402404.us.us.us.us.us.us = phi i64 [ %.418475491.us.us.us, %B240.endif.us.us.us.us.us.us ], [ %.809.us.us.us.us.us.us, %B300.us.us.us.us.us.us ]
   %.805.us.us.us.us.us.us = add nsw i64 %.795401405.us.us.us.us.us.us, -1
   %.809.us.us.us.us.us.us = add i64 %.802402404.us.us.us.us.us.us, 1
   %.862.us.us.us.us.us.us = icmp slt i64 %.802402404.us.us.us.us.us.us, 0
   %.863.us.us.us.us.us.us = select i1 %.862.us.us.us.us.us.us, i64 %arg.A.5.1, i64 0
-  %4 = getelementptr double, ptr %2, i64 %.802402404.us.us.us.us.us.us
-  %.885.us.us.us.us.us.us = getelementptr double, ptr %4, i64 %.863.us.us.us.us.us.us
-  %.886.us.us.us.us.us.us = load double, ptr %.885.us.us.us.us.us.us, align 8
+  %4 = getelementptr float, ptr %2, i64 %.802402404.us.us.us.us.us.us
+  %.885.us.us.us.us.us.us = getelementptr float, ptr %4, i64 %.863.us.us.us.us.us.us
+  %.886.us.us.us.us.us.us = load float, ptr %.885.us.us.us.us.us.us, align 4
   %.915.us.us.us.us.us.us = select i1 %.862.us.us.us.us.us.us, i64 %arg.B.5.0, i64 0
   %.916.us.us.us.us.us.us = add i64 %.915.us.us.us.us.us.us, %.802402404.us.us.us.us.us.us
   %.936.us.us.us.us.us.us = mul i64 %.916.us.us.us.us.us.us, %arg.B.5.1
-  %gep410.us.us.us.us.us.us = getelementptr double, ptr %invariant.gep409.us.us.us.us.us.us, i64 %.936.us.us.us.us.us.us
-  %.941.us.us.us.us.us.us = load double, ptr %gep410.us.us.us.us.us.us, align 8
-  %.944.us.us.us.us.us.us = fmul double %.886.us.us.us.us.us.us, %.941.us.us.us.us.us.us
-  %.946.us.us.us.us.us.us = fadd double %tmp.2.5406.us.us.us.us.us.us, %.944.us.us.us.us.us.us
+  %gep410.us.us.us.us.us.us = getelementptr float, ptr %invariant.gep409.us.us.us.us.us.us, i64 %.936.us.us.us.us.us.us
+  %.941.us.us.us.us.us.us = load float, ptr %gep410.us.us.us.us.us.us, align 4
+  %.944.us.us.us.us.us.us = fmul float %.886.us.us.us.us.us.us, %.941.us.us.us.us.us.us
+  %.946.us.us.us.us.us.us = fpext float %.944.us.us.us.us.us.us to double
+  %.947.us.us.us.us.us.us = fadd double %tmp.2.5406.us.us.us.us.us.us, %.946.us.us.us.us.us.us
   %.796.us.us.us.us.us.us = icmp sgt i64 %.795401405.us.us.us.us.us.us, 1
   br i1 %.796.us.us.us.us.us.us, label %B300.us.us.us.us.us.us, label %B296.B340_crit_edge.us.us.us.us.us.us
 
 B296.B340_crit_edge.us.us.us.us.us.us:            ; preds = %B300.us.us.us.us.us.us
   %.679.us.us.us.us.us.us = add i64 %.672412418.us.us.us.us.us.us, 1
-  %.986.us.us.us.us.us.us = select i1 %.917.us.us.us.us.us.us, i64 %arg.C.5.1, i64 0
-  %5 = getelementptr double, ptr %3, i64 %.672412418.us.us.us.us.us.us
-  %.1008.us.us.us.us.us.us = getelementptr double, ptr %5, i64 %.986.us.us.us.us.us.us
-  %.1009.us.us.us.us.us.us = load double, ptr %.1008.us.us.us.us.us.us, align 8
-  %.1011.us.us.us.us.us.us = fadd double %.946.us.us.us.us.us.us, %.1009.us.us.us.us.us.us
-  store double %.1011.us.us.us.us.us.us, ptr %.1008.us.us.us.us.us.us, align 8
+  %.987.us.us.us.us.us.us = select i1 %.917.us.us.us.us.us.us, i64 %arg.C.5.1, i64 0
+  %5 = getelementptr float, ptr %3, i64 %.672412418.us.us.us.us.us.us
+  %.1009.us.us.us.us.us.us = getelementptr float, ptr %5, i64 %.987.us.us.us.us.us.us
+  %.1010.us.us.us.us.us.us = load float, ptr %.1009.us.us.us.us.us.us, align 4
+  %.1012.us.us.us.us.us.us = fpext float %.1010.us.us.us.us.us.us to double
+  %.1013.us.us.us.us.us.us = fadd double %.947.us.us.us.us.us.us, %.1012.us.us.us.us.us.us
+  %.1063.us.us.us.us.us.us = fptrunc double %.1013.us.us.us.us.us.us to float
+  store float %.1063.us.us.us.us.us.us, ptr %.1009.us.us.us.us.us.us, align 4
   %.666.us.us.us.us.us.us = icmp sgt i64 %.665411419.us.us.us.us.us.us, 1
   br i1 %.666.us.us.us.us.us.us, label %B240.endif.us.us.us.us.us.us, label %B236.B180.loopexit_crit_edge.split.us.us.us.us.us.us
 
@@ -350,7 +353,7 @@ declare i64 @llvm.smin.i64(i64, i64) #0
 ; Function Attrs: nocallback nofree nosync nounwind speculatable willreturn memory(none)
 declare i64 @llvm.smax.i64(i64, i64) #0
 
-define ptr @_ZN7cpython8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx(ptr %py_closure, ptr %py_args, ptr %py_kws) {
+define ptr @_ZN7cpython8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx(ptr %py_closure, ptr %py_args, ptr %py_kws) {
 entry:
   %.5 = alloca ptr, align 8
   %.6 = alloca ptr, align 8
@@ -414,7 +417,7 @@ common.ret:                                       ; preds = %entry.endif.endif.e
   ret ptr %common.ret.op
 
 entry.endif:                                      ; preds = %entry
-  %.14 = load ptr, ptr @_ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx, align 8
+  %.14 = load ptr, ptr @_ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx, align 8
   %.15 = ptrtoint ptr %.14 to i64
   %.16 = add i64 %.15, 16
   %.17 = inttoptr i64 %.16 to ptr
@@ -422,7 +425,7 @@ entry.endif:                                      ; preds = %entry
   br i1 %.19, label %entry.endif.if, label %entry.endif.endif, !prof !0
 
 entry.endif.if:                                   ; preds = %entry.endif
-  call void @PyErr_SetString(ptr nonnull @PyExc_RuntimeError, ptr nonnull @".const.missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx")
+  call void @PyErr_SetString(ptr nonnull @PyExc_RuntimeError, ptr nonnull @".const.missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx")
   br label %common.ret
 
 entry.endif.endif:                                ; preds = %entry.endif
@@ -430,7 +433,7 @@ entry.endif.endif:                                ; preds = %entry.endif
   call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.24, i8 0, i64 72, i1 false)
   %.28 = call i32 @NRT_adapt_ndarray_from_python(ptr %.23, ptr nonnull %.24)
   %.32 = load i64, ptr %.fca.3.gep94, align 8
-  %.33 = icmp ne i64 %.32, 8
+  %.33 = icmp ne i64 %.32, 4
   %.34 = icmp ne i32 %.28, 0
   %.35 = or i1 %.34, %.33
   br i1 %.35, label %entry.endif.endif.if, label %entry.endif.endif.endif, !prof !0
@@ -455,7 +458,7 @@ entry.endif.endif.endif.endif:                    ; preds = %entry.endif.endif.e
   call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.49, i8 0, i64 72, i1 false)
   %.53 = call i32 @NRT_adapt_ndarray_from_python(ptr %.48, ptr nonnull %.49)
   %.57 = load i64, ptr %.fca.3.gep76, align 8
-  %.58 = icmp ne i64 %.57, 8
+  %.58 = icmp ne i64 %.57, 4
   %.59 = icmp ne i32 %.53, 0
   %.60 = or i1 %.59, %.58
   br i1 %.60, label %entry.endif.endif.endif.endif.if, label %entry.endif.endif.endif.endif.endif, !prof !0
@@ -484,7 +487,7 @@ entry.endif.endif.endif.endif.endif.endif:        ; preds = %entry.endif.endif.e
   call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.74, i8 0, i64 72, i1 false)
   %.78 = call i32 @NRT_adapt_ndarray_from_python(ptr %.73, ptr nonnull %.74)
   %.82 = load i64, ptr %.fca.3.gep58, align 8
-  %.83 = icmp ne i64 %.82, 8
+  %.83 = icmp ne i64 %.82, 4
   %.84 = icmp ne i32 %.78, 0
   %.85 = or i1 %.84, %.83
   br i1 %.85, label %entry.endif.endif.endif.endif.endif.endif.if, label %entry.endif.endif.endif.endif.endif.endif.endif, !prof !0
@@ -531,7 +534,7 @@ entry.endif.endif.endif.e...endif:                ; preds = %entry.endif.endif.e
 
 entry.endif.endif.endif.e...endif.endif:          ; preds = %entry.endif.endif.endif.e...endif
   call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.114, i8 0, i64 72, i1 false)
-  %.130 = call i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx(ptr nonnull %.114, ptr nonnull %excinfo, ptr %.39.fca.0.load, ptr %.39.fca.1.load, i64 %.39.fca.2.load, i64 8, ptr %.39.fca.4.load, i64 %.39.fca.5.0.load, i64 %.39.fca.5.1.load, i64 %.39.fca.6.0.load, i64 %.39.fca.6.1.load, ptr %.64.fca.0.load, ptr %.64.fca.1.load, i64 %.64.fca.2.load, i64 8, ptr %.64.fca.4.load, i64 %.64.fca.5.0.load, i64 %.64.fca.5.1.load, i64 %.64.fca.6.0.load, i64 %.64.fca.6.1.load, ptr %.89.fca.0.load, ptr %.89.fca.1.load, i64 %.89.fca.2.load, i64 8, ptr %.89.fca.4.load, i64 %.89.fca.5.0.load, i64 %.89.fca.5.1.load, i64 %.89.fca.6.0.load, i64 %.89.fca.6.1.load, i64 %.99.0) #2
+  %.130 = call i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx(ptr nonnull %.114, ptr nonnull %excinfo, ptr %.39.fca.0.load, ptr %.39.fca.1.load, i64 %.39.fca.2.load, i64 4, ptr %.39.fca.4.load, i64 %.39.fca.5.0.load, i64 %.39.fca.5.1.load, i64 %.39.fca.6.0.load, i64 %.39.fca.6.1.load, ptr %.64.fca.0.load, ptr %.64.fca.1.load, i64 %.64.fca.2.load, i64 4, ptr %.64.fca.4.load, i64 %.64.fca.5.0.load, i64 %.64.fca.5.1.load, i64 %.64.fca.6.0.load, i64 %.64.fca.6.1.load, ptr %.89.fca.0.load, ptr %.89.fca.1.load, i64 %.89.fca.2.load, i64 4, ptr %.89.fca.4.load, i64 %.89.fca.5.0.load, i64 %.89.fca.5.1.load, i64 %.89.fca.6.0.load, i64 %.89.fca.6.1.load, i64 %.99.0) #2
   %.131 = load ptr, ptr %excinfo, align 8
   %.140.fca.0.load = load ptr, ptr %.114, align 8
   %.140.fca.1.load = load ptr, ptr %.fca.1.gep38, align 8
@@ -574,7 +577,7 @@ entry.endif.endif.endif.e...endif.endif.if.endif.else: ; preds = %entry.endif.en
 
 entry.endif.endif.endif.e...endif.endif.if.endif.endif: ; preds = %entry.endif.endif.endif.e...endif.endif.if.endif.else, %entry.endif.endif.endif.e...endif.endif.if.endif.if
   %.181.0 = phi ptr [ %.186, %entry.endif.endif.endif.e...endif.endif.if.endif.if ], [ null, %entry.endif.endif.endif.e...endif.endif.if.endif.else ]
-  %.198 = call ptr @numba_unpickle(ptr nonnull @.const.pickledata.123536980735840, i32 32, ptr nonnull @.const.pickledata.123536980735840.sha1)
+  %.198 = call ptr @numba_unpickle(ptr nonnull @.const.pickledata.139210522261344, i32 32, ptr nonnull @.const.pickledata.139210522261344.sha1)
   store ptr %.140.fca.0.load, ptr %.199, align 8
   store ptr %.140.fca.1.load, ptr %.fca.1.gep, align 8
   store i64 %.140.fca.2.load, ptr %.fca.2.gep, align 8
@@ -682,7 +685,7 @@ declare void @numba_do_raise(ptr)
 
 declare void @PyErr_SetNone(ptr)
 
-define { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } @cfunc._ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx({ ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.1, { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.2, { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.3, i64 %.4) {
+define { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } @cfunc._ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx({ ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.1, { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.2, { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.3, i64 %.4) {
 entry:
   %.6 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 8
   %.fca.1.gep = getelementptr inbounds nuw i8, ptr %.6, i64 8
@@ -729,7 +732,7 @@ entry:
   %extracted.strides.2 = extractvalue { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %.3, 6
   %.20 = extractvalue [2 x i64] %extracted.strides.2, 0
   %.21 = extractvalue [2 x i64] %extracted.strides.2, 1
-  %.22 = call i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedE5ArrayIdLi2E1C7mutable7alignedEx(ptr nonnull %.6, ptr nonnull %excinfo, ptr %extracted.meminfo, ptr %extracted.parent, i64 %extracted.nitems, i64 %extracted.itemsize, ptr %extracted.data, i64 %.10, i64 %.11, i64 %.12, i64 %.13, ptr %extracted.meminfo.1, ptr %extracted.parent.1, i64 %extracted.nitems.1, i64 %extracted.itemsize.1, ptr %extracted.data.1, i64 %.14, i64 %.15, i64 %.16, i64 %.17, ptr %extracted.meminfo.2, ptr %extracted.parent.2, i64 %extracted.nitems.2, i64 %extracted.itemsize.2, ptr %extracted.data.2, i64 %.18, i64 %.19, i64 %.20, i64 %.21, i64 %.4) #2
+  %.22 = call i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx(ptr nonnull %.6, ptr nonnull %excinfo, ptr %extracted.meminfo, ptr %extracted.parent, i64 %extracted.nitems, i64 %extracted.itemsize, ptr %extracted.data, i64 %.10, i64 %.11, i64 %.12, i64 %.13, ptr %extracted.meminfo.1, ptr %extracted.parent.1, i64 %extracted.nitems.1, i64 %extracted.itemsize.1, ptr %extracted.data.1, i64 %.14, i64 %.15, i64 %.16, i64 %.17, ptr %extracted.meminfo.2, ptr %extracted.parent.2, i64 %extracted.nitems.2, i64 %extracted.itemsize.2, ptr %extracted.data.2, i64 %.18, i64 %.19, i64 %.20, i64 %.21, i64 %.4) #2
   %.23 = load ptr, ptr %excinfo, align 8
   %.32.fca.0.load = load ptr, ptr %.6, align 8
   %.32.fca.1.load = load ptr, ptr %.fca.1.gep, align 8
@@ -768,7 +771,7 @@ common.ret:                                       ; preds = %entry, %entry, %.52
   ret { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %common.ret.op
 
 .52:                                              ; preds = %entry.if.endif, %entry.if.if.endif, %entry.if.if.endif.if, %entry.if.endif.endif.endif, %entry.if.endif.if
-  %.100 = call ptr @PyUnicode_FromString(ptr nonnull @".const.<numba.core.cpu.CPUContext object at 0x705b26bccb00>")
+  %.100 = call ptr @PyUnicode_FromString(ptr nonnull @".const.<numba.core.cpu.CPUContext object at 0x7e9c6ef846b0>")
   call void @PyErr_WriteUnraisable(ptr %.100)
   call void @Py_DecRef(ptr %.100)
   call void @numba_gil_release(ptr nonnull %.49)

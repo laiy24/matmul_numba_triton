@@ -26,10 +26,10 @@ def numba_tiled_mul(A, B, C, B1):
 def main():
     N = 1024  # Default size
     # Initialize data
-    A = np.random.rand(N, N).astype(np.float64)
-    B = np.random.rand(N, N).astype(np.float64)
+    A = np.random.rand(N, N).astype(np.float32)
+    B = np.random.rand(N, N).astype(np.float32)
     # Pre-calculate B_T. .copy() is essential for contiguous memory.
-    C = np.zeros((N, N), dtype=np.float64)
+    C = np.zeros((N, N), dtype=np.float32)
 
     numba_tiled_mul(A, B, C, 32)
 

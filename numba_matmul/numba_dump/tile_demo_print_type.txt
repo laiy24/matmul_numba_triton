@@ -1,10 +1,10 @@
 -----------------------------------ANNOTATION-----------------------------------
-# File: /home/isabelle/ece/numba_matmul/numba_matmul_tile_demo.py
+# File: /home/isabelle/ece/numba_matmul/numba_dump/numba_matmul_tile_demo.py
 # --- LINE 9 --- 
 # label 0
-#   A = arg(0, name=A)  :: array(float64, 2d, C)
-#   B = arg(1, name=B)  :: array(float64, 2d, C)
-#   C = arg(2, name=C)  :: array(float64, 2d, C)
+#   A = arg(0, name=A)  :: array(float32, 2d, C)
+#   B = arg(1, name=B)  :: array(float32, 2d, C)
+#   C = arg(2, name=C)  :: array(float32, 2d, C)
 #   B1 = arg(3, name=B1)  :: int64
 
 @jit(nopython=True)
@@ -227,13 +227,13 @@ def numba_tiled_mul(A, B, C, B1):
 
                             # --- LINE 20 --- 
                             #   $310build_tuple.11 = build_tuple(items=[Var(i, numba_matmul_tile_demo.py:16), Var(k, numba_matmul_tile_demo.py:19)])  :: UniTuple(int64 x 2)
-                            #   $312binary_subscr.12 = getitem(value=A, index=$310build_tuple.11, fn=<built-in function getitem>)  :: float64
+                            #   $312binary_subscr.12 = getitem(value=A, index=$310build_tuple.11, fn=<built-in function getitem>)  :: float32
                             #   del $310build_tuple.11
                             #   $322build_tuple.16 = build_tuple(items=[Var(k, numba_matmul_tile_demo.py:19), Var(j, numba_matmul_tile_demo.py:17)])  :: UniTuple(int64 x 2)
                             #   del k
-                            #   $324binary_subscr.17 = getitem(value=B, index=$322build_tuple.16, fn=<built-in function getitem>)  :: float64
+                            #   $324binary_subscr.17 = getitem(value=B, index=$322build_tuple.16, fn=<built-in function getitem>)  :: float32
                             #   del $322build_tuple.16
-                            #   $binop_mul328.18 = $312binary_subscr.12 * $324binary_subscr.17  :: float64
+                            #   $binop_mul328.18 = $312binary_subscr.12 * $324binary_subscr.17  :: float32
                             #   del $324binary_subscr.17
                             #   del $312binary_subscr.12
                             #   $binop_iadd332.19 = inplace_binop(fn=<built-in function iadd>, immutable_fn=<built-in function add>, lhs=tmp.2, rhs=$binop_mul328.18, static_lhs=Undefined, static_rhs=Undefined)  :: float64
@@ -253,11 +253,11 @@ def numba_tiled_mul(A, B, C, B1):
                         #   del $296for_iter.8
                         #   $348build_tuple.10 = build_tuple(items=[Var(i, numba_matmul_tile_demo.py:16), Var(j, numba_matmul_tile_demo.py:17)])  :: UniTuple(int64 x 2)
                         #   del j
-                        #   $354binary_subscr.11 = getitem(value=C, index=$348build_tuple.10, fn=<built-in function getitem>)  :: float64
+                        #   $354binary_subscr.11 = getitem(value=C, index=$348build_tuple.10, fn=<built-in function getitem>)  :: float32
                         #   $binop_iadd360.13 = inplace_binop(fn=<built-in function iadd>, immutable_fn=<built-in function add>, lhs=$354binary_subscr.11, rhs=tmp.2, static_lhs=Undefined, static_rhs=Undefined)  :: float64
                         #   del tmp.2
                         #   del $354binary_subscr.11
-                        #   C[$348build_tuple.10] = $binop_iadd360.13  :: (Array(float64, 2, 'C', False, aligned=True), UniTuple(int64, 2), float64) -> none
+                        #   C[$348build_tuple.10] = $binop_iadd360.13  :: (Array(float32, 2, 'C', False, aligned=True), UniTuple(int64, 2), float64) -> none
                         #   del $binop_iadd360.13
                         #   del $348build_tuple.10
                         #   jump 236
@@ -273,7 +273,7 @@ def numba_tiled_mul(A, B, C, B1):
     #   del $phi64.1
     #   del $phi60.0
     #   del $60for_iter.3
-    #   $394return_value.3 = cast(value=C)  :: array(float64, 2d, C)
+    #   $394return_value.3 = cast(value=C)  :: array(float32, 2d, C)
     #   del C
     #   return $394return_value.3
 
