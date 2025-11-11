@@ -35,6 +35,14 @@ Directory: `numba_matmul/`
 - Execute: `sudo bash numba_matmul/numba_benchmark.sh`
 - Output: `numba_matmul/numba_benchmark_results.csv`
 
+### 2b. Compare Parallel Thread Counts
+- Edit `numba_matmul/numba_benchmark_par.sh` to point `PYTHON_CMD` at your environment.
+- Run the fixed workload sweep: `bash numba_matmul/numba_benchmark_par.sh`
+- Analyze and plot the thread scaling results: `python numba_matmul/analyze_numba_par_result.py`
+- Outputs:
+	- CSV: `numba_matmul/numba_benchmark_par_results.csv`
+	- Plot: `numba_matmul/numba_plots/thread_count_effect.png`
+
 ### 3. Analyze and Plot Results
 - `python numba_matmul/analyze_numba_result.py`
 - Optional edit: set `CSV_FILENAME` inside the script if the CSV lives elsewhere.
