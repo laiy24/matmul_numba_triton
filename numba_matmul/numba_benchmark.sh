@@ -7,17 +7,17 @@ echo "--- Starting Matrix Benchmark Automation ---"
 # *** EDIT THIS ***
 # Paste the full path to the python executable from your conda environment
 # Find it by running: `conda activate <your_env>` and then `which python`
-PYTHON_CMD="/home/isabelle/miniconda3/envs/numba/bin/python"
+PYTHON_CMD="/home/laiy24/miniconda3/envs/numba/bin/python"
 #
 # ---
 
 # Number of times to repeat *inside* each Python run
 # NOTE: 100 reps can take a very long time for parallel N=1024.
 # Consider lowering to 10 or 20 if runtime is too long.
-REPS=1
+REPS=30
 
 # List of matrix sizes to test
-N_SIZES="1024 2056"
+N_SIZES="1024 2048"
 # Block sizes for L2 (outer tile)
 B_SIZES="4 8 16 32 64 128 256" 
 # Block sizes for L1 (inner tile)

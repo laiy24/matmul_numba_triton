@@ -43,6 +43,13 @@ Directory: `numba_matmul/`
 	- CSV: `numba_matmul/numba_benchmark_par_results.csv`
 	- Plot: `numba_matmul/numba_plots/thread_count_effect.png`
 
+### 2c. Compare SLP Vectorization
+- Edit `numba_matmul/numba_benchmark_vec.sh` and set `PYTHON_CMD` to your environment interpreter.
+- Run the benchmark sweep (from inside `numba_matmul/`): `bash numba_benchmark_vec.sh`.
+- Results collect in `numba_matmul/numba_benchmark_vec_results.csv` with both `NUMBA_SLP_VECTORIZE=0` and `=1` runs.
+- Plot the scalar vs. vectorized performance: `python numba_matmul/analyze_numba_vectorization.py`.
+- Generated figures land in `numba_matmul/numba_plots_vectorize/` (created automatically).
+
 ### 3. Analyze and Plot Results
 - `python numba_matmul/analyze_numba_result.py`
 - Optional edit: set `CSV_FILENAME` inside the script if the CSV lives elsewhere.
