@@ -308,11 +308,11 @@ def main():
     args = parser.parse_args()
 
     # Initialize data
-    A = np.random.rand(args.N, args.N).astype(np.float64)
-    B = np.random.rand(args.N, args.N).astype(np.float64)
+    A = np.random.rand(args.N, args.N).astype(np.float32)
+    B = np.random.rand(args.N, args.N).astype(np.float32)
     # Pre-calculate B_T. .copy() is essential for contiguous memory.
     B_T = B.T.copy() 
-    C = np.zeros((args.N, args.N), dtype=np.float64)
+    C = np.zeros((args.N, args.N), dtype=np.float32)
 
     # --- Select function to run ---
     run_fn = None
