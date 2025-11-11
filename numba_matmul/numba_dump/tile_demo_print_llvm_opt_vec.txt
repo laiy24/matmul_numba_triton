@@ -5,9 +5,9 @@ source_filename = "<string>"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-@.const.pickledata.132495214260224 = internal constant [102 x i8] c"\80\04\95[\00\00\00\00\00\00\00\8C\08builtins\94\8C\0CRuntimeError\94\93\94\8C6numba jitted function aborted due to unresolved symbol\94\85\94N\87\94."
-@.const.pickledata.132495214260224.sha1 = internal constant [20 x i8] c"\97\BE\DC\DF\EC\8E\80\B7\09>P\CE%\EDV\F7r\0E\0C\9C"
-@.const.picklebuf.132495214260224 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.132495214260224, i32 102, ptr @.const.pickledata.132495214260224.sha1, ptr null, i32 0 }
+@.const.pickledata.128823573851968 = internal constant [102 x i8] c"\80\04\95[\00\00\00\00\00\00\00\8C\08builtins\94\8C\0CRuntimeError\94\93\94\8C6numba jitted function aborted due to unresolved symbol\94\85\94N\87\94."
+@.const.pickledata.128823573851968.sha1 = internal constant [20 x i8] c"\97\BE\DC\DF\EC\8E\80\B7\09>P\CE%\EDV\F7r\0E\0C\9C"
+@.const.picklebuf.128823573851968 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.128823573851968, i32 102, ptr @.const.pickledata.128823573851968.sha1, ptr null, i32 0 }
 
 ; Function Attrs: mustprogress nofree norecurse nounwind willreturn memory(argmem: readwrite)
 define i64 @nrt_atomic_add(ptr nocapture %.1) local_unnamed_addr #0 {
@@ -84,7 +84,7 @@ declare void @NRT_MemInfo_call_dtor(ptr) local_unnamed_addr
 ; Function Attrs: mustprogress nofree norecurse nosync nounwind willreturn memory(argmem: write)
 define noundef i32 @nrt_unresolved_abort(ptr nocapture readnone %.1, ptr nocapture writeonly initializes((0, 8)) %.2) local_unnamed_addr #4 {
 .4:
-  store ptr @.const.picklebuf.132495214260224, ptr %.2, align 8, !numba_exception_output !1
+  store ptr @.const.picklebuf.128823573851968, ptr %.2, align 8, !numba_exception_output !1
   ret i32 1
 }
 
@@ -109,21 +109,21 @@ source_filename = "<string>"
 target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-unknown-linux-gnu"
 
-@.const.pickledata.132495186907008 = internal constant [76 x i8] c"\80\04\95A\00\00\00\00\00\00\00\8C\08builtins\94\8C\0AValueError\94\93\94\8C\1Erange() arg 3 must not be zero\94\85\94N\87\94."
-@.const.pickledata.132495186907008.sha1 = internal constant [20 x i8] c"\CA\8E\FB:r\D6\14\FE\87 2\CC\E3\AC2`\07\A3\07'"
-@.const.picklebuf.132495186907008 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.132495186907008, i32 76, ptr @.const.pickledata.132495186907008.sha1, ptr null, i32 0 }
+@.const.pickledata.128823546580736 = internal constant [76 x i8] c"\80\04\95A\00\00\00\00\00\00\00\8C\08builtins\94\8C\0AValueError\94\93\94\8C\1Erange() arg 3 must not be zero\94\85\94N\87\94."
+@.const.pickledata.128823546580736.sha1 = internal constant [20 x i8] c"\CA\8E\FB:r\D6\14\FE\87 2\CC\E3\AC2`\07\A3\07'"
+@.const.picklebuf.128823546580736 = internal constant { ptr, i32, ptr, ptr, i32 } { ptr @.const.pickledata.128823546580736, i32 76, ptr @.const.pickledata.128823546580736.sha1, ptr null, i32 0 }
 @.const.numba_tiled_mul = internal constant [16 x i8] c"numba_tiled_mul\00"
 @_ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx = common local_unnamed_addr global ptr null
 @".const.missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx" = internal constant [201 x i8] c"missing Environment: _ZN08NumbaEnv8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx\00"
 @PyExc_TypeError = external global i8
 @".const.can't unbox array from PyObject into native value.  The object maybe of a different type" = internal constant [89 x i8] c"can't unbox array from PyObject into native value.  The object maybe of a different type\00"
 @".const.`env.consts` is NULL in `read_const`" = internal constant [37 x i8] c"`env.consts` is NULL in `read_const`\00"
-@.const.pickledata.132495368157024 = internal constant [32 x i8] c"\80\04\95\15\00\00\00\00\00\00\00\8C\05numpy\94\8C\07ndarray\94\93\94."
-@.const.pickledata.132495368157024.sha1 = internal constant [20 x i8] c"\DF\BC\FD\D3\9F\CB&\F4\D0\C6\80\95D\87\B8\C0\B5;\B8\A3"
+@.const.pickledata.128823728961376 = internal constant [32 x i8] c"\80\04\95\15\00\00\00\00\00\00\00\8C\05numpy\94\8C\07ndarray\94\93\94."
+@.const.pickledata.128823728961376.sha1 = internal constant [20 x i8] c"\DF\BC\FD\D3\9F\CB&\F4\D0\C6\80\95D\87\B8\C0\B5;\B8\A3"
 @".const.Error creating Python tuple from runtime exception arguments" = internal constant [61 x i8] c"Error creating Python tuple from runtime exception arguments\00"
 @PyExc_RuntimeError = external global i8
 @".const.Error creating Python tuple from runtime exception arguments.1" = internal constant [61 x i8] c"Error creating Python tuple from runtime exception arguments\00"
-@".const.<numba.core.cpu.CPUContext object at 0x7880f08d07a0>" = internal constant [53 x i8] c"<numba.core.cpu.CPUContext object at 0x7880f08d07a0>\00"
+@".const.<numba.core.cpu.CPUContext object at 0x752a11bbca10>" = internal constant [53 x i8] c"<numba.core.cpu.CPUContext object at 0x752a11bbca10>\00"
 
 define range(i32 0, 2) i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx(ptr noalias nocapture writeonly %retptr, ptr noalias nocapture writeonly %excinfo, ptr %arg.A.0, ptr nocapture readnone %arg.A.1, i64 %arg.A.2, i64 %arg.A.3, ptr nocapture readonly %arg.A.4, i64 %arg.A.5.0, i64 %arg.A.5.1, i64 %arg.A.6.0, i64 %arg.A.6.1, ptr %arg.B.0, ptr nocapture readnone %arg.B.1, i64 %arg.B.2, i64 %arg.B.3, ptr nocapture readonly %arg.B.4, i64 %arg.B.5.0, i64 %arg.B.5.1, i64 %arg.B.6.0, i64 %arg.B.6.1, ptr %arg.C.0, ptr %arg.C.1, i64 %arg.C.2, i64 %arg.C.3, ptr %arg.C.4, i64 %arg.C.5.0, i64 %arg.C.5.1, i64 %arg.C.6.0, i64 %arg.C.6.1, i64 %arg.B1) local_unnamed_addr {
 B0:
@@ -164,7 +164,7 @@ B390:                                             ; preds = %B60.loopexit, %B0.e
   br label %common.ret
 
 B0.if:                                            ; preds = %B0
-  store ptr @.const.picklebuf.132495186907008, ptr %excinfo, align 8, !numba_exception_output !1
+  store ptr @.const.picklebuf.128823546580736, ptr %excinfo, align 8, !numba_exception_output !1
   br label %common.ret
 
 B0.endif:                                         ; preds = %B0
@@ -607,12 +607,12 @@ entry:
   %.24 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 8
   %.49 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 8
   %.74 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 8
-  %.114 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 8
+  %.114 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 16
   %excinfo = alloca ptr, align 8
-  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.114, i8 0, i64 72, i1 false)
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(72) %.114, i8 0, i64 72, i1 false)
   store ptr null, ptr %excinfo, align 8
-  %.199 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 8
-  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.199, i8 0, i64 72, i1 false)
+  %.199 = alloca { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] }, align 16
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(72) %.199, i8 0, i64 72, i1 false)
   br i1 %.10, label %common.ret, label %entry.endif, !prof !0
 
 common.ret:                                       ; preds = %entry.endif.endif.endif.e...if.2, %entry.endif.endif.endif.e...endif.endif.endif.if.endif, %arg0.err, %entry.endif.endif.endif, %entry, %entry.endif.endif.endif.e...if.1, %entry.endif.endif.endif.e...endif.endif.if.endif.endif, %entry.endif.if
@@ -741,26 +741,17 @@ entry.endif.endif.endif.e...endif:                ; preds = %entry.endif.endif.e
   br i1 %.110.not, label %entry.endif.endif.endif.e...endif.endif, label %arg2.err, !prof !5
 
 entry.endif.endif.endif.e...endif.endif:          ; preds = %entry.endif.endif.endif.e...endif
-  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(72) %.114, i8 0, i64 72, i1 false)
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 16 dereferenceable(72) %.114, i8 0, i64 72, i1 false)
   %.130 = call i32 @_ZN8__main__15numba_tiled_mulB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedE5ArrayIfLi2E1C7mutable7alignedEx(ptr nonnull %.114, ptr nonnull %excinfo, ptr %.39.fca.0.load, ptr poison, i64 poison, i64 poison, ptr %.39.fca.4.load, i64 %.39.fca.5.0.load, i64 %.39.fca.5.1.load, i64 poison, i64 poison, ptr %.64.fca.0.load, ptr poison, i64 poison, i64 poison, ptr %.64.fca.4.load, i64 %.64.fca.5.0.load, i64 %.64.fca.5.1.load, i64 poison, i64 poison, ptr %.89.fca.0.load, ptr %.89.fca.1.load, i64 %.89.fca.2.load, i64 4, ptr %.89.fca.4.load, i64 %.89.fca.5.0.load, i64 %.89.fca.5.1.load, i64 %.89.fca.6.0.load, i64 %.89.fca.6.1.load, i64 %.99.0) #3
   %.131 = load ptr, ptr %excinfo, align 8
-  %.140.fca.0.load = load ptr, ptr %.114, align 8
-  %sunkaddr16 = getelementptr inbounds i8, ptr %.114, i64 8
-  %.140.fca.1.load = load ptr, ptr %sunkaddr16, align 8
-  %sunkaddr17 = getelementptr inbounds i8, ptr %.114, i64 16
-  %.140.fca.2.load = load i64, ptr %sunkaddr17, align 8
-  %sunkaddr18 = getelementptr inbounds i8, ptr %.114, i64 24
-  %.140.fca.3.load = load i64, ptr %sunkaddr18, align 8
-  %sunkaddr19 = getelementptr inbounds i8, ptr %.114, i64 32
-  %.140.fca.4.load = load ptr, ptr %sunkaddr19, align 8
-  %sunkaddr20 = getelementptr inbounds i8, ptr %.114, i64 40
-  %.140.fca.5.0.load = load i64, ptr %sunkaddr20, align 8
-  %sunkaddr21 = getelementptr inbounds i8, ptr %.114, i64 48
-  %.140.fca.5.1.load = load i64, ptr %sunkaddr21, align 8
-  %sunkaddr22 = getelementptr inbounds i8, ptr %.114, i64 56
-  %.140.fca.6.0.load = load i64, ptr %sunkaddr22, align 8
-  %sunkaddr23 = getelementptr inbounds i8, ptr %.114, i64 64
-  %.140.fca.6.1.load = load i64, ptr %sunkaddr23, align 8
+  %0 = load <2 x ptr>, ptr %.114, align 16
+  %.140.fca.0.load = load ptr, ptr %.114, align 16
+  %sunkaddr16 = getelementptr inbounds i8, ptr %.114, i64 16
+  %1 = load <2 x i64>, ptr %sunkaddr16, align 16
+  %sunkaddr17 = getelementptr inbounds i8, ptr %.114, i64 32
+  %.140.fca.4.load = load ptr, ptr %sunkaddr17, align 16
+  %sunkaddr18 = getelementptr inbounds i8, ptr %.114, i64 40
+  %2 = load <4 x i64>, ptr %sunkaddr18, align 8
   call void @NRT_decref(ptr %.39.fca.0.load)
   call void @NRT_decref(ptr %.64.fca.0.load)
   call void @NRT_decref(ptr %.89.fca.0.load)
@@ -768,8 +759,8 @@ entry.endif.endif.endif.e...endif.endif:          ; preds = %entry.endif.endif.e
   br i1 %cond, label %entry.endif.endif.endif.e...endif.endif.if.endif, label %entry.endif.endif.endif.e...endif.endif.endif.if
 
 entry.endif.endif.endif.e...endif.endif.if.endif: ; preds = %entry.endif.endif.endif.e...endif.endif
-  %sunkaddr24 = getelementptr i8, ptr %.14, i64 24
-  %.180 = load ptr, ptr %sunkaddr24, align 8
+  %sunkaddr19 = getelementptr i8, ptr %.14, i64 24
+  %.180 = load ptr, ptr %sunkaddr19, align 8
   %.184.not = icmp eq ptr %.180, null
   br i1 %.184.not, label %entry.endif.endif.endif.e...endif.endif.if.endif.else, label %entry.endif.endif.endif.e...endif.endif.if.endif.if
 
@@ -783,24 +774,14 @@ entry.endif.endif.endif.e...endif.endif.if.endif.else: ; preds = %entry.endif.en
 
 entry.endif.endif.endif.e...endif.endif.if.endif.endif: ; preds = %entry.endif.endif.endif.e...endif.endif.if.endif.else, %entry.endif.endif.endif.e...endif.endif.if.endif.if
   %.181.0 = phi ptr [ %.186, %entry.endif.endif.endif.e...endif.endif.if.endif.if ], [ null, %entry.endif.endif.endif.e...endif.endif.if.endif.else ]
-  %.198 = call ptr @numba_unpickle(ptr nonnull @.const.pickledata.132495368157024, i32 32, ptr nonnull @.const.pickledata.132495368157024.sha1)
-  store ptr %.140.fca.0.load, ptr %.199, align 8
-  %sunkaddr25 = getelementptr inbounds i8, ptr %.199, i64 8
-  store ptr %.140.fca.1.load, ptr %sunkaddr25, align 8
-  %sunkaddr26 = getelementptr inbounds i8, ptr %.199, i64 16
-  store i64 %.140.fca.2.load, ptr %sunkaddr26, align 8
-  %sunkaddr27 = getelementptr inbounds i8, ptr %.199, i64 24
-  store i64 %.140.fca.3.load, ptr %sunkaddr27, align 8
-  %sunkaddr28 = getelementptr inbounds i8, ptr %.199, i64 32
-  store ptr %.140.fca.4.load, ptr %sunkaddr28, align 8
-  %sunkaddr29 = getelementptr inbounds i8, ptr %.199, i64 40
-  store i64 %.140.fca.5.0.load, ptr %sunkaddr29, align 8
-  %sunkaddr30 = getelementptr inbounds i8, ptr %.199, i64 48
-  store i64 %.140.fca.5.1.load, ptr %sunkaddr30, align 8
-  %sunkaddr31 = getelementptr inbounds i8, ptr %.199, i64 56
-  store i64 %.140.fca.6.0.load, ptr %sunkaddr31, align 8
-  %sunkaddr32 = getelementptr inbounds i8, ptr %.199, i64 64
-  store i64 %.140.fca.6.1.load, ptr %sunkaddr32, align 8
+  %.198 = call ptr @numba_unpickle(ptr nonnull @.const.pickledata.128823728961376, i32 32, ptr nonnull @.const.pickledata.128823728961376.sha1)
+  store <2 x ptr> %0, ptr %.199, align 16
+  %sunkaddr20 = getelementptr inbounds i8, ptr %.199, i64 16
+  store <2 x i64> %1, ptr %sunkaddr20, align 16
+  %sunkaddr21 = getelementptr inbounds i8, ptr %.199, i64 32
+  store ptr %.140.fca.4.load, ptr %sunkaddr21, align 16
+  %sunkaddr22 = getelementptr inbounds i8, ptr %.199, i64 40
+  store <4 x i64> %2, ptr %sunkaddr22, align 8
   %.203 = call ptr @NRT_adapt_ndarray_to_python_acqref(ptr nonnull %.199, ptr %.198, i32 2, i32 1, ptr %.181.0)
   call void @NRT_decref(ptr %.140.fca.0.load)
   br label %common.ret
@@ -948,7 +929,7 @@ common.ret:                                       ; preds = %entry, %.52, %entry
   ret { ptr, ptr, i64, i64, ptr, [2 x i64], [2 x i64] } %common.ret.op
 
 .52:                                              ; preds = %entry.if.if.endif, %entry.if.if.endif.if
-  %.100 = call ptr @PyUnicode_FromString(ptr nonnull @".const.<numba.core.cpu.CPUContext object at 0x7880f08d07a0>")
+  %.100 = call ptr @PyUnicode_FromString(ptr nonnull @".const.<numba.core.cpu.CPUContext object at 0x752a11bbca10>")
   call void @PyErr_WriteUnraisable(ptr %.100)
   call void @Py_DecRef(ptr %.100)
   call void @numba_gil_release(ptr nonnull %.49)
