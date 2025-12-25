@@ -231,6 +231,371 @@ def numba_parallel_tiled2_mul(A, B, C, B1_L2, B2_L1):
                                     C[i, j] += tmp
     return C
     
+# --- Matrix Multiplication with Loop Reordering (All 6 permutations) ---
+
+# 1. ijk order (standard, same as naive)
+@jit(nopython=True, cache=True)
+def numba_reordered_ijk_mul(A, B, C):
+    """Numba-jitted matmul with ijk loop order."""
+    N = A.shape[0]
+    for i in range(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_reordered_ijk_mul(A, B, C):
+    """Numba-jitted matmul with ijk loop order, parallelized over i."""
+    N = A.shape[0]
+    for i in prange(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+# 2. ikj order (often best for cache)
+@jit(nopython=True, cache=True)
+def numba_reordered_ikj_mul(A, B, C):
+    """Numba-jitted matmul with ikj loop order."""
+    N = A.shape[0]
+    for i in range(N):
+        for k in range(N):
+            tmp = A[i, k]
+            for j in range(N):
+                C[i, j] += tmp * B[k, j]
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_reordered_ikj_mul(A, B, C):
+    """Numba-jitted matmul with ikj loop order, parallelized over i."""
+    N = A.shape[0]
+    for i in prange(N):
+        for k in range(N):
+            tmp = A[i, k]
+            for j in range(N):
+                C[i, j] += tmp * B[k, j]
+    return C
+
+# 3. jik order
+@jit(nopython=True, cache=True)
+def numba_reordered_jik_mul(A, B, C):
+    """Numba-jitted matmul with jik loop order."""
+    N = A.shape[0]
+    for j in range(N):
+        for i in range(N):
+            tmp = 0.0
+            for k in range(N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_reordered_jik_mul(A, B, C):
+    """Numba-jitted matmul with jik loop order, parallelized over j."""
+    N = A.shape[0]
+    for j in prange(N):
+        for i in range(N):
+            tmp = 0.0
+            for k in range(N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+# 4. jki order
+@jit(nopython=True, cache=True)
+def numba_reordered_jki_mul(A, B, C):
+    """Numba-jitted matmul with jki loop order."""
+    N = A.shape[0]
+    for j in range(N):
+        for k in range(N):
+            tmp = B[k, j]
+            for i in range(N):
+                C[i, j] += A[i, k] * tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_reordered_jki_mul(A, B, C):
+    """Numba-jitted matmul with jki loop order, parallelized over j."""
+    N = A.shape[0]
+    for j in prange(N):
+        for k in range(N):
+            tmp = B[k, j]
+            for i in range(N):
+                C[i, j] += A[i, k] * tmp
+    return C
+
+# 5. kij order
+@jit(nopython=True, cache=True)
+def numba_reordered_kij_mul(A, B, C):
+    """Numba-jitted matmul with kij loop order."""
+    N = A.shape[0]
+    for k in range(N):
+        for i in range(N):
+            tmp = A[i, k]
+            for j in range(N):
+                C[i, j] += tmp * B[k, j]
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_reordered_kij_mul(A, B, C):
+    """Numba-jitted matmul with kij loop order, parallelized over i."""
+    N = A.shape[0]
+    for k in range(N):
+        for i in prange(N):
+            tmp = A[i, k]
+            for j in range(N):
+                C[i, j] += tmp * B[k, j]
+    return C
+
+# 6. kji order
+@jit(nopython=True, cache=True)
+def numba_reordered_kji_mul(A, B, C):
+    """Numba-jitted matmul with kji loop order."""
+    N = A.shape[0]
+    for k in range(N):
+        for j in range(N):
+            tmp = B[k, j]
+            for i in range(N):
+                C[i, j] += A[i, k] * tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_reordered_kji_mul(A, B, C):
+    """Numba-jitted matmul with kji loop order, parallelized over k."""
+    N = A.shape[0]
+    for k in prange(N):
+        for j in range(N):
+            tmp = B[k, j]
+            for i in range(N):
+                C[i, j] += A[i, k] * tmp
+    return C
+
+# --- Matrix Multiplication with Loop Unrolling (Unroll Factor 2) ---
+
+@jit(nopython=True, cache=True)
+def numba_unrolled2_mul(A, B, C):
+    """Numba-jitted matmul with manual loop unrolling factor 2 on the k dimension."""
+    N = A.shape[0]
+    for i in range(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 1, 2):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+            # Handle remainder
+            if N % 2 != 0:
+                tmp += A[i, N - 1] * B[N - 1, j]
+            C[i, j] = tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_unrolled2_mul(A, B, C):
+    """Numba-jitted matmul with loop unrolling factor 2, parallelized over i."""
+    N = A.shape[0]
+    for i in prange(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 1, 2):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+            # Handle remainder
+            if N % 2 != 0:
+                tmp += A[i, N - 1] * B[N - 1, j]
+            C[i, j] = tmp
+    return C
+
+# --- Matrix Multiplication with Loop Unrolling (Unroll Factor 4) ---
+
+@jit(nopython=True, cache=True)
+def numba_unrolled4_mul(A, B, C):
+    """Numba-jitted matmul with manual loop unrolling factor 4 on the k dimension."""
+    N = A.shape[0]
+    for i in range(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 3, 4):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+                tmp += A[i, k + 2] * B[k + 2, j]
+                tmp += A[i, k + 3] * B[k + 3, j]
+            # Handle remainder
+            for k in range((N // 4) * 4, N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_unrolled4_mul(A, B, C):
+    """Numba-jitted matmul with loop unrolling factor 4, parallelized over i."""
+    N = A.shape[0]
+    for i in prange(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 3, 4):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+                tmp += A[i, k + 2] * B[k + 2, j]
+                tmp += A[i, k + 3] * B[k + 3, j]
+            # Handle remainder
+            for k in range((N // 4) * 4, N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+# --- Matrix Multiplication with Loop Unrolling (Unroll Factor 8) ---
+
+@jit(nopython=True, cache=True)
+def numba_unrolled8_mul(A, B, C):
+    """Numba-jitted matmul with manual loop unrolling factor 8 on the k dimension."""
+    N = A.shape[0]
+    for i in range(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 7, 8):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+                tmp += A[i, k + 2] * B[k + 2, j]
+                tmp += A[i, k + 3] * B[k + 3, j]
+                tmp += A[i, k + 4] * B[k + 4, j]
+                tmp += A[i, k + 5] * B[k + 5, j]
+                tmp += A[i, k + 6] * B[k + 6, j]
+                tmp += A[i, k + 7] * B[k + 7, j]
+            # Handle remainder
+            for k in range((N // 8) * 8, N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_unrolled8_mul(A, B, C):
+    """Numba-jitted matmul with loop unrolling factor 8, parallelized over i."""
+    N = A.shape[0]
+    for i in prange(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 7, 8):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+                tmp += A[i, k + 2] * B[k + 2, j]
+                tmp += A[i, k + 3] * B[k + 3, j]
+                tmp += A[i, k + 4] * B[k + 4, j]
+                tmp += A[i, k + 5] * B[k + 5, j]
+                tmp += A[i, k + 6] * B[k + 6, j]
+                tmp += A[i, k + 7] * B[k + 7, j]
+            # Handle remainder
+            for k in range((N // 8) * 8, N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+# --- Matrix Multiplication with Loop Unrolling (Unroll Factor 16) ---
+
+@jit(nopython=True, cache=True)
+def numba_unrolled16_mul(A, B, C):
+    """Numba-jitted matmul with manual loop unrolling factor 16 on the k dimension."""
+    N = A.shape[0]
+    for i in range(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 15, 16):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+                tmp += A[i, k + 2] * B[k + 2, j]
+                tmp += A[i, k + 3] * B[k + 3, j]
+                tmp += A[i, k + 4] * B[k + 4, j]
+                tmp += A[i, k + 5] * B[k + 5, j]
+                tmp += A[i, k + 6] * B[k + 6, j]
+                tmp += A[i, k + 7] * B[k + 7, j]
+                tmp += A[i, k + 8] * B[k + 8, j]
+                tmp += A[i, k + 9] * B[k + 9, j]
+                tmp += A[i, k + 10] * B[k + 10, j]
+                tmp += A[i, k + 11] * B[k + 11, j]
+                tmp += A[i, k + 12] * B[k + 12, j]
+                tmp += A[i, k + 13] * B[k + 13, j]
+                tmp += A[i, k + 14] * B[k + 14, j]
+                tmp += A[i, k + 15] * B[k + 15, j]
+            # Handle remainder
+            for k in range((N // 16) * 16, N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_parallel_unrolled16_mul(A, B, C):
+    """Numba-jitted matmul with loop unrolling factor 16, parallelized over i."""
+    N = A.shape[0]
+    for i in prange(N):
+        for j in range(N):
+            tmp = 0.0
+            for k in range(0, N - 15, 16):
+                tmp += A[i, k] * B[k, j]
+                tmp += A[i, k + 1] * B[k + 1, j]
+                tmp += A[i, k + 2] * B[k + 2, j]
+                tmp += A[i, k + 3] * B[k + 3, j]
+                tmp += A[i, k + 4] * B[k + 4, j]
+                tmp += A[i, k + 5] * B[k + 5, j]
+                tmp += A[i, k + 6] * B[k + 6, j]
+                tmp += A[i, k + 7] * B[k + 7, j]
+                tmp += A[i, k + 8] * B[k + 8, j]
+                tmp += A[i, k + 9] * B[k + 9, j]
+                tmp += A[i, k + 10] * B[k + 10, j]
+                tmp += A[i, k + 11] * B[k + 11, j]
+                tmp += A[i, k + 12] * B[k + 12, j]
+                tmp += A[i, k + 13] * B[k + 13, j]
+                tmp += A[i, k + 14] * B[k + 14, j]
+                tmp += A[i, k + 15] * B[k + 15, j]
+            # Handle remainder
+            for k in range((N // 16) * 16, N):
+                tmp += A[i, k] * B[k, j]
+            C[i, j] = tmp
+    return C
+
+
+# --- Ultimate Matrix Multiplication (Tiled + Transposed + ikj) ---
+
+@jit(nopython=True, cache=True)
+def numba_ultimate(A, B_T, C, B1=32):
+    """Ultimate Numba matmul: 1-level tiling (B1=32) + transposed B + ikj ordering."""
+    N = A.shape[0]
+    for ii in range(0, N, B1):
+        for kk in range(0, N, B1):
+            for jj in range(0, N, B1):
+                # ikj ordering within tiles
+                for i in range(ii, min(ii + B1, N)):
+                    for k in range(kk, min(kk + B1, N)):
+                        tmp = A[i, k]
+                        for j in range(jj, min(jj + B1, N)):
+                            C[i, j] += tmp * B_T[j, k]  # Transposed access
+    return C
+
+@jit(nopython=True, cache=True, parallel=True)
+def numba_ultimate_parallel(A, B_T, C, B1=32):
+    """Ultimate Numba matmul (parallel): 1-level tiling (B1=32) + transposed B + ikj ordering."""
+    N = A.shape[0]
+    num_tiles = (N + B1 - 1) // B1
+    
+    for tile_idx_ii in prange(num_tiles):  # Parallelize over i tiles
+        ii = tile_idx_ii * B1
+        
+        for tile_idx_kk in range(num_tiles):
+            kk = tile_idx_kk * B1
+            
+            for tile_idx_jj in range(num_tiles):
+                jj = tile_idx_jj * B1
+                
+                # ikj ordering within tiles
+                for i in range(ii, min(ii + B1, N)):
+                    for k in range(kk, min(kk + B1, N)):
+                        tmp = A[i, k]
+                        for j in range(jj, min(jj + B1, N)):
+                            C[i, j] += tmp * B_T[j, k]  # Transposed access
+    return C
+
 # --- Parallel Matrix Multiplication (Transposed B) ---
 
 @jit(nopython=True, cache=True, parallel=True)
@@ -379,6 +744,84 @@ def main():
         run_fn = lambda: numba_parallel_tiled2_mul_transposed(A, B_T, C, args.B1, args.B2)
         is_mul = True
         
+    # --- Multiplication (Ultimate) ---
+    elif args.benchmark == "numba_ultimate":
+        run_fn = lambda: numba_ultimate(A, B_T, C, args.B1 if args.B1 > 0 else 32)
+        is_mul = True
+    elif args.benchmark == "numba_ultimate_parallel":
+        run_fn = lambda: numba_ultimate_parallel(A, B_T, C, args.B1 if args.B1 > 0 else 32)
+        is_mul = True
+        
+    # --- Multiplication (Loop Reordering) ---
+    # All 6 loop orderings
+    elif args.benchmark == "numba_reordered_ijk_mul":
+        run_fn = lambda: numba_reordered_ijk_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_reordered_ijk_mul":
+        run_fn = lambda: numba_parallel_reordered_ijk_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_reordered_ikj_mul":
+        run_fn = lambda: numba_reordered_ikj_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_reordered_ikj_mul":
+        run_fn = lambda: numba_parallel_reordered_ikj_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_reordered_jik_mul":
+        run_fn = lambda: numba_reordered_jik_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_reordered_jik_mul":
+        run_fn = lambda: numba_parallel_reordered_jik_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_reordered_jki_mul":
+        run_fn = lambda: numba_reordered_jki_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_reordered_jki_mul":
+        run_fn = lambda: numba_parallel_reordered_jki_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_reordered_kij_mul":
+        run_fn = lambda: numba_reordered_kij_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_reordered_kij_mul":
+        run_fn = lambda: numba_parallel_reordered_kij_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_reordered_kji_mul":
+        run_fn = lambda: numba_reordered_kji_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_reordered_kji_mul":
+        run_fn = lambda: numba_parallel_reordered_kji_mul(A, B, C)
+        is_mul = True
+        
+    # --- Multiplication (Loop Unrolling Factor 2) ---
+    elif args.benchmark == "numba_unrolled2_mul":
+        run_fn = lambda: numba_unrolled2_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_unrolled2_mul":
+        run_fn = lambda: numba_parallel_unrolled2_mul(A, B, C)
+        is_mul = True
+        
+    # --- Multiplication (Loop Unrolling Factor 4) ---
+    elif args.benchmark == "numba_unrolled4_mul":
+        run_fn = lambda: numba_unrolled4_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_unrolled4_mul":
+        run_fn = lambda: numba_parallel_unrolled4_mul(A, B, C)
+        is_mul = True
+        
+    # --- Multiplication (Loop Unrolling Factor 8) ---
+    elif args.benchmark == "numba_unrolled8_mul":
+        run_fn = lambda: numba_unrolled8_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_unrolled8_mul":
+        run_fn = lambda: numba_parallel_unrolled8_mul(A, B, C)
+        is_mul = True
+        
+    # --- Multiplication (Loop Unrolling Factor 16) ---
+    elif args.benchmark == "numba_unrolled16_mul":
+        run_fn = lambda: numba_unrolled16_mul(A, B, C)
+        is_mul = True
+    elif args.benchmark == "numba_parallel_unrolled16_mul":
+        run_fn = lambda: numba_parallel_unrolled16_mul(A, B, C)
+        is_mul = True
     else:
         print(f"Error: Unknown benchmark '{args.benchmark}'", file=sys.stderr)
         sys.exit(1)

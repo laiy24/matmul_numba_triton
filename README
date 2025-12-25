@@ -1,3 +1,5 @@
+# Matrix multiplication with Numba and Triton
+
 Matrix multiplication experiments implemented in Numba and Triton. The repository contains two completely separate pipelines:
 - `numba_matmul/` – CPU-focused kernels with Linux perf-based benchmarking.
 - `triton_matmul/` – GPU-focused kernels and autotuned Triton benchmarks.
@@ -54,6 +56,30 @@ Directory: `numba_matmul/`
 - `python numba_matmul/analyze_numba_result.py`
 - Optional edit: set `CSV_FILENAME` inside the script if the CSV lives elsewhere.
 - Generates plots in `numba_matmul/numba_plots/` (directory created automatically) and prints the best-performing configuration.
+
+### 3a. Compare Loop Reordering Strategies
+- Edit `numba_matmul/numba_benchmark_reorder.sh` and set `PYTHON_CMD` to your environment interpreter.
+- Run the loop reordering benchmark sweep: `bash numba_matmul/numba_benchmark_reorder.sh`.
+- Tests all 6 permutations of ijk loop orderings (ijk, ikj, jik, jki, kij, kji) in both serial and parallel modes.
+- Output: `numba_matmul/numba_benchmark_reorder_results.csv`
+- Analyze and plot: `python numba_matmul/analyze_numba_reorder_result.py`
+- Generates comparison plots in `numba_matmul/numba_plots/` showing which loop order achieves best cache locality.
+
+### 3b. Compare Loop Unrolling Factors
+- Edit `numba_matmul/numba_benchmark_loop_unroll.sh` and set `PYTHON_CMD` to your environment interpreter.
+- Run the loop unrolling benchmark sweep: `bash numba_matmul/numba_benchmark_loop_unroll.sh`.
+- Tests manual loop unrolling with factors of 2, 4, 8, and 16 on the innermost k dimension.
+- Note: Uses `NUMBA_OPT=0` to disable LLVM auto-unrolling and isolate manual unrolling effects.
+- Output: `numba_matmul/numba_benchmark_loop_unroll_results.csv`
+- Analyze and plot: `python numba_matmul/analyze_numba_unroll_result.py`
+- Generates plots comparing unrolling factors against baseline naive implementation.
+
+### 3c. Benchmark Ultimate Optimized Implementation
+- The "ultimate" implementations combine best practices: 1-level tiling (32×32 blocks), transposed B matrix, and ikj loop ordering.
+- To benchmark and append results to existing CSV: `bash numba_matmul/numba_benchmark.sh ultimate`
+- This runs both `numba_ultimate` (serial) and `numba_ultimate_parallel` variants.
+- Results append to `numba_benchmark_results.csv` without deleting previous data.
+- For quick timing comparison of naive vs ultimate: `python numba_matmul.py --benchmark numba_ultimate --N 1024 --B1 32 --reps 10 --mode multi_run_timing`
 
 ### 4. Explore Compiler Dumps for the Tiled Demo
 - Activate your Numba environment and change into `numba_matmul/numba_dump` so the generated debug files stay alongside the helper scripts: `cd numba_matmul/numba_dump`.

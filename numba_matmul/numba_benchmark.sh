@@ -11,6 +11,9 @@ PYTHON_CMD="/home/laiy24/miniconda3/envs/numba/bin/python"
 #
 # ---
 
+# Parse command line arguments
+MODE=${1:-"full"}  # Default to "full", can be "ultimate"
+
 # Number of times to repeat *inside* each Python run
 # NOTE: 100 reps can take a very long time for parallel N=1024.
 # Consider lowering to 10 or 20 if runtime is too long.
@@ -31,8 +34,10 @@ PERF_EVENTS="cycles,instructions,L1-dcache-loads,L1-dcache-load-misses,L2-loads,
 OUT_CSV="numba_benchmark_results.csv"
 
 # --- Setup ---
-# Clean previous results
-rm -f $OUT_CSV
+# Clean previous results (only if running full benchmark)
+if [ "$MODE" != "ultimate" ]; then
+    rm -f $OUT_CSV
+fi
 
 # Check for perf
 if ! command -v perf &> /dev/null
@@ -148,9 +153,32 @@ run_perf_stat() {
 # ===================================================================
 echo -e "\n--- Running 'perf stat' for N in {$N_SIZES}, $REPS times each ---"
 
-# Write the new, correct CSV header
+# Write the new, correct CSV header (only if running full benchmark)
 # We add "reps" to know what to divide by
-echo "benchmark_name,N,B1,B2,reps,$PERF_EVENTS,avg_time_sec" > $OUT_CSV
+if [ "$MODE" != "ultimate" ]; then
+    echo "benchmark_name,N,B1,B2,reps,$PERF_EVENTS,avg_time_sec" > $OUT_CSV
+else
+    echo "--- Running in ULTIMATE mode (appending to existing CSV) ---"
+    # Check if CSV exists and has header
+    if [ ! -f $OUT_CSV ]; then
+        echo "Warning: $OUT_CSV does not exist. Creating with header..."
+        echo "benchmark_name,N,B1,B2,reps,$PERF_EVENTS,avg_time_sec" > $OUT_CSV
+    fi
+fi
+
+if [ "$MODE" == "ultimate" ]; then
+    # --- Run Ultimate Benchmarks Only ---
+    for N in $N_SIZES; do
+        echo "--- Benchmarking Ultimate for N=$N ($REPS reps) ---"
+        echo "  Running numba_ultimate (B1=32)..."
+        run_perf_stat "numba_ultimate" $N 32 0 $REPS $OUT_CSV
+        echo "  Running numba_ultimate_parallel (B1=32)..."
+        run_perf_stat "numba_ultimate_parallel" $N 32 0 $REPS $OUT_CSV
+    done
+    echo -e "\n--- Ultimate benchmarks complete. ---"
+    echo "Results appended to: $OUT_CSV"
+    exit 0
+fi
 
 for N in $N_SIZES; do
     echo "--- Benchmarking for N=$N ($REPS reps) ---"
