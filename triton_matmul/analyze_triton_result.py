@@ -128,32 +128,51 @@ def _plot_group(
 def _plot_per_size(df: pd.DataFrame, outdir: Path) -> int:
 	outdir.mkdir(parents=True, exist_ok=True)
 
+	# Benchmarks that use block size sweeps (non-autotuned)
+	sweep_benchmarks = ["triton_matmul_basic", "triton_matmul_persistent"]
+
 	plot_count = 0
 	for n_value, group in df.groupby("N", sort=True):
 		if group.empty:
 			continue
 
-		basics = group[group["benchmark_name"] == "triton_matmul_basic"]
-		others = group[group["benchmark_name"] != "triton_matmul_basic"]
+		# Plot each sweep benchmark separately
+		for bench_name in sweep_benchmarks:
+			bench_data = group[group["benchmark_name"] == bench_name]
+			bench_sorted = bench_data.sort_values("avg_time_sec", ascending=True)
+			if not bench_sorted.empty:
+				_plot_group(
+					bench_sorted["config_label"],
+					bench_sorted["avg_time_sec"],
+					f"{bench_name} block sweep (N={n_value})",
+					outdir / f"runtime_{bench_name}_configs_N{n_value}.png",
+				)
+				plot_count += 1
 
-		basics_sorted = basics.sort_values("avg_time_sec", ascending=True)
-		if not basics_sorted.empty:
-			_plot_group(
-				basics_sorted["config_label"],
-				basics_sorted["avg_time_sec"],
-				f"triton_matmul_basic block sweep (N={n_value})",
-				outdir / f"runtime_basic_configs_N{n_value}.png",
-			)
-			plot_count += 1
-
-		best_basic = basics_sorted.head(1)
-		mix = pd.concat([others, best_basic], ignore_index=True)
+		# Create a mixed plot with best from each sweep benchmark + all autotuned benchmarks
+		sweep_data = group[group["benchmark_name"].isin(sweep_benchmarks)]
+		autotuned_data = group[~group["benchmark_name"].isin(sweep_benchmarks)]
+		
+		# Get the best config from each sweep benchmark
+		best_from_sweeps = []
+		for bench_name in sweep_benchmarks:
+			bench_data = sweep_data[sweep_data["benchmark_name"] == bench_name]
+			if not bench_data.empty:
+				best_from_sweeps.append(bench_data.nsmallest(1, "avg_time_sec"))
+		
+		# Combine best sweep configs with all autotuned configs
+		if best_from_sweeps:
+			best_sweeps_df = pd.concat(best_from_sweeps, ignore_index=True)
+			mix = pd.concat([autotuned_data, best_sweeps_df], ignore_index=True)
+		else:
+			mix = autotuned_data
+		
 		mix_sorted = mix.sort_values("avg_time_sec", ascending=True)
 		if not mix_sorted.empty:
 			_plot_group(
 				mix_sorted["config_label"],
 				mix_sorted["avg_time_sec"],
-				f"All configs (best basic included) N={n_value}",
+				f"All configs (best from sweeps + autotuned) N={n_value}",
 				outdir / f"runtime_mixed_configs_N{n_value}.png",
 			)
 			plot_count += 1

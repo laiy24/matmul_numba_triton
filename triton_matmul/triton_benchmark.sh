@@ -32,7 +32,8 @@ N_SIZES="512 1024 2048 4096"
 # Note: `triton_matmul_basic2` was removed from the Python script; we use
 # `triton_matmul_basic` with explicit block-size flags instead.
 # Benchmarks ending with "autotuned" manage their own tuning and will be run once per N.
-BENCHMARKS="triton_matmul_basic triton_matmul_autotuned triton_2d_grid_autotuned triton_grouped_autotuned"
+# Non-autotuned benchmarks (basic, persistent) will be run with each block size sweep.
+BENCHMARKS="triton_matmul_basic triton_matmul_persistent triton_matmul_autotuned triton_2d_grid_autotuned triton_grouped_autotuned"
 
 # List of BLOCK_SIZE triplets to sweep (format: M,N,K)
 # Add or remove tuples here to control the sweep.
